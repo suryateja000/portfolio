@@ -448,17 +448,7 @@ useEffect(() => {
           <h2><FaPuzzlePiece />Problem Solving Data</h2>
           <div className="filter-section">
             <label className="filter-label">Analysis Period</label>
-            <div className="filter-buttons">
-              {[7, 30, 90].map(days => (
-                <button
-                  key={days}
-                  onClick={() => setProblemPeriod(days)}
-                  className={problemPeriod === days ? 'active' : ''}
-                >
-                  Last {days} Days
-                </button>
-              ))}
-            </div>
+            
           </div>
           <div className="problem-stats-grid">
             <div className="problem-stat-card">
