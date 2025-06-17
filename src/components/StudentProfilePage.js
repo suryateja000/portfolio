@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
 import { 
   FaChartBar, 
   FaTrophy, 
@@ -285,12 +286,40 @@ const StudentProfilePage = () => {
   const { codeHandle } = useParams();
   const [contestPeriod, setContestPeriod] = useState(365);
   const [problemPeriod, setProblemPeriod] = useState(30);
-  
-  const studentData = rawData[codeHandle];
+  const [loading,isLoading] = useState(true)
+  const [studentData,setStudentData] = useState({});
+
+
+
+
+useEffect(() => {
+  const fetchData = async () => {
+    const contestdata = await axios.get(`http://localhost:5000/contest/contestsdata/${codeHandle}?days=365`);
+    const problemData = await axios.get(`http://localhost:5000/problem/data/${codeHandle}`);
+    console.log("hihihiihihiihiihiiihiiihi");
+    setStudentData({
+      problemData: problemData.data,
+      contestData: contestdata.data
+    });
+    isLoading(false);
+  };
+
+  fetchData();
+}, [codeHandle]);
+
+
+
+
+
+
 
   const filteredContests = useMemo(() => {
     if (!studentData) return [];
     const filterDate = timeAgo(contestPeriod);
+    console.log(studentData)
+    if(!studentData.contestData){
+      return []
+    }
     return studentData.contestData
       .filter(c => new Date(c.Date) >= filterDate)
       .sort((a, b) => new Date(b.Date) - new Date(a.Date));
@@ -298,13 +327,20 @@ const StudentProfilePage = () => {
 
   const currentProblemStats = useMemo(() => {
     if (!studentData) return null;
-    return studentData.problemData.periodStats[problemPeriod] || {
+    if(!studentData.problemData) return {};
+    console.log("ogogogo",studentData)
+    return  {
       mostDifficult: studentData.problemData.mostDifficultProblemSolved,
       totalSolved: studentData.problemData.totalProblemsSolved,
       averageRating: studentData.problemData.averageRating,
       averagePerDay: studentData.problemData.averageProblemsPerDay
     };
   }, [problemPeriod, studentData]);
+
+
+  if(loading){
+    return(<><div><h1>Loading...</h1></div></>)
+   }
 
   if (!studentData) {
     return (
@@ -372,7 +408,8 @@ const StudentProfilePage = () => {
       },
     },
   };
-
+ 
+   
   return (
     <div className="profile-container">
       <div className="profile-header">

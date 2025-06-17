@@ -11,16 +11,21 @@ const StudentModal = ({ student, onSave, onClose }) => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [prevhandle,setprevhandle] = useState('')
+  const [prevemail,setprevemail] = useState('')
 
   useEffect(() => {
     if (student) {
+      console.log(student)
       setFormData({
         name: student.name || '',
         email: student.email || '',
         phone: student.phone || '',
-        codeforcesHandle: student.codeforcesHandle || '',
+        codeforcesHandle: student.codeHandle || '',
         emailNotifications: student.emailNotifications !== false
       });
+      setprevhandle(student.codeHandle || '')
+      setprevemail(student.email || '')
     }
   }, [student]);
 
@@ -74,7 +79,9 @@ const StudentModal = ({ student, onSave, onClose }) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
+      prevHandle:prevhandle,
+      prevEmail:prevemail
     }));
     
     // Clear error when user starts typing
