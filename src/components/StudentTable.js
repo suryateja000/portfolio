@@ -16,7 +16,7 @@ const StudentTable = ({ darkMode, setDarkMode, apiBaseUrl }) => {
 
   const fetchStudents = useCallback(async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/students`);
+      const response = await axios.get(`http://localhost:5000/student/getStudents`);
       setStudents(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -29,17 +29,42 @@ const StudentTable = ({ darkMode, setDarkMode, apiBaseUrl }) => {
     fetchStudents();
   }, [fetchStudents]);
 
+//{codeHandle,email,newhandle}
 
   const handleSaveStudent = async (formData) => {
-    const url = editingStudent 
-      ? `${apiBaseUrl}/students/update/${editingStudent._id}` 
-      : `${apiBaseUrl}/students/add`;
-    const method = editingStudent ? 'put' : 'post';
-    try {
-      await axios[method](url, formData);
+    console.log(formData)
+   try {  if(editingStudent){
+          const codeHandle = formData.prevHandle 
+          const mailupdate= formData.emailNotifications?1:0 
+          const email = formData.email
+          const prevemail = formData.prevEmail
+          console.log("ppp",prevemail)
+          if(codeHandle && (codeHandle!=formData.codeforcesHandle)){
+          const data = await axios.put('http://localHost:5000/student/updateHandle',{codeHandle,email,newhandle:formData.codeforcesHandle}) 
+          }
+          const mail = await axios.post('http://localhost:5000/student/mailupdate',{value:mailupdate,handle:formData.codeforcesHandle})
+          if(prevemail){
+          await axios.put('http://localhost:5000/student/updateStudent',{name:formData.name,email:formData.email,phone:formData.phone,oldemail:prevemail})
+          }
+          fetchStudents(); 
+          setShowModal(false);
+      setEditingStudent(null);
+
+
+
+    }
+    else{
+      await axios.post('http://localhost:5000/student/addStudent',{
+        name:formData.name,
+        email:formData.email,
+        phno:formData.phone,
+        codeHandle:formData.codeforcesHandle
+      })
       setShowModal(false);
       setEditingStudent(null);
       fetchStudents();
+    }
+  
     } catch (error) {
       console.error("Error saving student:", error);
     }
