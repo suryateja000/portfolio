@@ -16,7 +16,7 @@ const StudentTable = ({ darkMode, setDarkMode, apiBaseUrl }) => {
 
   const fetchStudents = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/student/getStudents`);
+      const response = await axios.get(`https://codeforces-profile.onrender.com/getStudents`);
       setStudents(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -40,11 +40,11 @@ const StudentTable = ({ darkMode, setDarkMode, apiBaseUrl }) => {
           const prevemail = formData.prevEmail
           console.log("ppp",prevemail)
           if(codeHandle && (codeHandle!=formData.codeforcesHandle)){
-          const data = await axios.put('http://localHost:5000/student/updateHandle',{codeHandle,email,newhandle:formData.codeforcesHandle}) 
+          const data = await axios.put('https://codeforces-profile.onrender.com/student/updateHandle',{codeHandle,email,newhandle:formData.codeforcesHandle}) 
           }
-          const mail = await axios.post('http://localhost:5000/student/mailupdate',{value:mailupdate,handle:formData.codeforcesHandle})
+          const mail = await axios.post('https://codeforces-profile.onrender.com/student/mailupdate',{value:mailupdate,handle:formData.codeforcesHandle})
           if(prevemail){
-          await axios.put('http://localhost:5000/student/updateStudent',{name:formData.name,email:formData.email,phone:formData.phone,oldemail:prevemail})
+          await axios.put('https://codeforces-profile.onrender.com/student/updateStudent',{name:formData.name,email:formData.email,phone:formData.phone,oldemail:prevemail})
           }
           fetchStudents(); 
           setShowModal(false);
@@ -54,7 +54,7 @@ const StudentTable = ({ darkMode, setDarkMode, apiBaseUrl }) => {
 
     }
     else{
-      await axios.post('http://localhost:5000/student/addStudent',{
+      await axios.post('https://codeforces-profile.onrender.com/student/addStudent',{
         name:formData.name,
         email:formData.email,
         phno:formData.phone,

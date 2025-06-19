@@ -294,8 +294,8 @@ const StudentProfilePage = () => {
 
 useEffect(() => {
   const fetchData = async () => {
-    const contestdata = await axios.get(`http://localhost:5000/contest/contestsdata/${codeHandle}?days=365`);
-    const problemData = await axios.get(`http://localhost:5000/problem/data/${codeHandle}`);
+    const contestdata = await axios.get(`https://codeforces-profile.onrender.com/contest/contestsdata/${codeHandle}?days=365`);
+    const problemData = await axios.get(`https://codeforces-profile.onrender.com/problem/data/${codeHandle}`);
     console.log("hihihiihihiihiihiiihiiihi");
     setStudentData({
       problemData: problemData.data,
