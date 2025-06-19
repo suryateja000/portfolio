@@ -294,8 +294,8 @@ const StudentProfilePage = () => {
 
 useEffect(() => {
   const fetchData = async () => {
-    const contestdata = await axios.get(`https://codeforces-profile.onrender.com/contest/contestsdata/${codeHandle}?days=365`);
-    const problemData = await axios.get(`https://codeforces-profile.onrender.com/problem/data/${codeHandle}`);
+    const contestdata = await axios.get(`https://codeforces-profile-rzac.onrender.com/contest/contestsdata/${codeHandle}?days=365`);
+    const problemData = await axios.get(`https://codeforces-profile-rzac.onrender.com/problem/data/${codeHandle}`);
     console.log("hihihiihihiihiihiiihiiihi");
     setStudentData({
       problemData: problemData.data,
@@ -442,46 +442,7 @@ useEffect(() => {
             </div>
           </div>
         </div>
-
-        {/* Problem Solving Section */}
-        <div className="problem-solving-section">
-          <h2><FaPuzzlePiece />Problem Solving Data</h2>
-          <div className="filter-section">
-            <label className="filter-label">Analysis Period</label>
-            
-          </div>
-          <div className="problem-stats-grid">
-            <div className="problem-stat-card">
-              <FaBullseye />
-              <div className="stat-label">Most Difficult</div>
-              <p className="stat-value">
-                <Link
-                  to={`https://codeforces.com/contest/${problemData.mostDifficultProblemDetails.contestId}/problem/${problemData.mostDifficultProblemDetails.index}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {currentProblemStats.mostDifficult}
-                </Link>
-              </p>
-            </div>
-            <div className="problem-stat-card">
-              <FaCheckCircle />
-              <div className="stat-label">Total Solved</div>
-              <p className="stat-value">{currentProblemStats.totalSolved}</p>
-            </div>
-            <div className="problem-stat-card">
-              <FaChartBar />
-              <div className="stat-label">Avg Rating</div>
-              <p className="stat-value">{Math.round(currentProblemStats.averageRating)}</p>
-            </div>
-            <div className="problem-stat-card">
-              <FaRunning />
-              <div className="stat-label">Per Day</div>
-              <p className="stat-value">{currentProblemStats.averagePerDay}</p>
-            </div>
-          </div>
-        </div>
-
+        
         {/* Contest Details Section */}
         <div className="contest-details-section">
           <h2><FaListAlt />Contest Performance Details</h2>
@@ -521,6 +482,54 @@ useEffect(() => {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+        {/* Problem Solving Section */}
+        <div className="problem-solving-section">
+          <h2><FaPuzzlePiece />Problem Solving Data</h2>
+          <div className="filter-section">
+            <label className="filter-label">Analysis Period</label>
+            <div className="filter-buttons">
+              {[7, 30, 90].map(days => (
+                <button
+                  key={days}
+                  onClick={() => setProblemPeriod(days)}
+                  className={problemPeriod === days ? 'active' : ''}
+                >
+                  Last {days} Days
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="problem-stats-grid">
+            <div className="problem-stat-card">
+              <FaBullseye />
+              <div className="stat-label">Most Difficult</div>
+              <p className="stat-value">
+                <Link
+                  to={`https://codeforces.com/contest/${problemData.mostDifficultProblemDetails.contestId}/problem/${problemData.mostDifficultProblemDetails.index}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {currentProblemStats.mostDifficult}
+                </Link>
+              </p>
+            </div>
+            <div className="problem-stat-card">
+              <FaCheckCircle />
+              <div className="stat-label">Total Solved</div>
+              <p className="stat-value">{currentProblemStats.totalSolved}</p>
+            </div>
+            <div className="problem-stat-card">
+              <FaChartBar />
+              <div className="stat-label">Avg Rating</div>
+              <p className="stat-value">{Math.round(currentProblemStats.averageRating)}</p>
+            </div>
+            <div className="problem-stat-card">
+              <FaRunning />
+              <div className="stat-label">Per Day</div>
+              <p className="stat-value">{currentProblemStats.averagePerDay}</p>
+            </div>
           </div>
         </div>
 

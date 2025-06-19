@@ -37,14 +37,32 @@
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
+
+  /* Mapped variables for consistency with existing CSS rules */
+  --bg-primary: var(--surface-white);
+  --bg-secondary: var(--surface-gray-50);
+  --bg-tertiary: var(--surface-gray-100);
+  --border-primary: var(--border-light);
+  --border-secondary: var(--border-medium);
+
+  /* Primary colors derived from --primary-gradient */
+  --primary-500: #667eea; /* Start of the gradient */
+  --primary-600: #764ba2; /* End of the gradient */
+  --primary-700: #5D3F7D; /* A darker shade for hover/active states */
+
+  /* Semantic colors */
+  --success-500: var(--accent-green);
+  --warning-500: var(--accent-orange);
 }
 
 .student-management {
   font-family: var(--font-family);
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: var(--bg-secondary);
   color: var(--text-primary);
   min-height: 100vh;
   padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
 }
 
 .page-header {
@@ -53,20 +71,17 @@
   align-items: flex-start;
   margin-bottom: var(--space-8);
   padding: var(--space-6);
-  background: var(--surface-white);
+  background: var(--bg-primary);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-primary);
 }
 
 .header-left .page-title {
   font-size: var(--font-size-3xl);
   font-weight: 700;
   margin: 0;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-600);
   letter-spacing: -0.025em;
 }
 
@@ -83,10 +98,10 @@
   align-items: center;
   margin-bottom: var(--space-6);
   padding: var(--space-5);
-  background: var(--surface-white);
+  background: var(--bg-primary);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-primary);
   flex-wrap: wrap;
   gap: var(--space-4);
 }
@@ -108,10 +123,10 @@
 
 .search-input {
   width: 100%;
-  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-12);
-  border: 1.5px solid var(--border-medium);
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-8);
+  border: 1.5px solid var(--border-primary);
   border-radius: var(--radius-lg);
-  background: var(--surface-gray-50);
+  background: var(--bg-secondary);
   color: var(--text-primary);
   font-size: var(--font-size-sm);
   font-weight: 500;
@@ -120,8 +135,8 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--accent-blue);
-  background: var(--surface-white);
+  border-color: var(--primary-500);
+  background: var(--bg-primary);
   box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
   transform: translateY(-1px);
 }
@@ -145,6 +160,7 @@
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   letter-spacing: 0.025em;
+  white-space: nowrap; /* Prevent text wrapping on buttons */
 }
 
 .btn:hover {
@@ -163,18 +179,19 @@
 }
 
 .btn-primary:hover {
+  background: var(--primary-700); /* Darker solid color for hover */
   box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
-  background: var(--surface-white);
+  background: var(--bg-primary);
   color: var(--text-primary);
-  border-color: var(--border-medium);
+  border-color: var(--border-primary);
 }
 
 .btn-secondary:hover {
-  background: var(--surface-gray-50);
-  border-color: var(--border-light);
+  background: var(--bg-tertiary);
+  border-color: var(--border-secondary);
 }
 
 .btn-sm {
@@ -184,27 +201,30 @@
 }
 
 .table-container {
-  background: var(--surface-white);
+  background: var(--bg-primary);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-primary);
+  flex-grow: 1; /* Allow table container to take available space */
 }
 
 .table-wrapper {
-  overflow-x: auto;
+  overflow-x: auto; /* Enable horizontal scrolling for the table */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .students-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px; /* Ensure table has a minimum width for non-mobile columns */
 }
 
 .students-table th,
 .students-table td {
   padding: var(--space-5) var(--space-6);
   text-align: left;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-primary);
 }
 
 .students-table thead th {
@@ -212,7 +232,7 @@
   font-weight: 700;
   text-transform: uppercase;
   color: var(--text-secondary);
-  background: linear-gradient(135deg, var(--surface-gray-50) 0%, var(--surface-gray-100) 100%);
+  background: var(--bg-secondary);
   letter-spacing: 0.05em;
   position: sticky;
   top: 0;
@@ -224,7 +244,7 @@
 }
 
 .students-table tbody tr:hover {
-  background: linear-gradient(135deg, var(--surface-gray-50) 0%, rgba(59, 130, 246, 0.02) 100%);
+  background: var(--bg-secondary);
   transform: scale(1.001);
 }
 
@@ -239,10 +259,10 @@
 }
 
 .avatar {
-  width: 3rem;
-  height: 3rem;
+  width: var(--space-12);
+  height: var(--space-12);
   border-radius: 50%;
-  background: var(--primary-gradient);
+  background: var(--primary-600);
   color: white;
   display: flex;
   align-items: center;
@@ -250,7 +270,8 @@
   font-weight: 700;
   font-size: var(--font-size-lg);
   box-shadow: var(--shadow-md);
-  border: 3px solid var(--surface-white);
+  border: 3px solid var(--bg-primary);
+  flex-shrink: 0; /* Prevent shrinking on small screens */
 }
 
 .student-details {
@@ -282,111 +303,52 @@
 }
 
 .rating-badge.newbie {
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  background: var(--surface-gray-100);
   color: var(--text-secondary);
 }
 
 .rating-badge.pupil {
-  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-  color: #166534;
+  background: var(--success-500);
+  color: white;
 }
 
 .rating-badge.specialist {
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  color: #1e40af;
+  background: var(--primary-500);
+  color: white;
 }
 
 .rating-badge.expert {
-  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-  color: #3730a3;
+  background: var(--primary-700);
+  color: white;
 }
 
 .rating-badge.master {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  color: #92400e;
+  background: var(--warning-500);
+  color: white;
 }
 
 .actions-cell {
   display: flex;
-  gap: var(--space-2);
+  gap: var(--space-3);
+  flex-shrink: 0; /* Prevent shrinking on small screens */
+  height: 90px;
 }
 
 .actions-cell .btn {
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-2) var(--space-4);
   font-size: var(--font-size-xs);
 }
 
-@media (max-width: 1024px) {
-  .student-management {
-    padding: var(--space-6);
-  }
-  
-  .page-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
-  }
-}
-
-@media (max-width: 768px) {
-  .student-management {
-    padding: var(--space-4);
-  }
-  
-  .controls-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .search-container {
-    max-width: none;
-  }
-  
-  .students-table th,
-  .students-table td {
-    padding: var(--space-4);
-  }
-  
-  .student-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-  }
-  
-  .avatar {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: var(--font-size-base);
-  }
-}
-
-@media (max-width: 640px) {
-  .students-table .student-email,
-  .students-table .actions-cell {
-    display: none;
-  }
-  
-  .page-header .page-title {
-    font-size: var(--font-size-2xl);
-  }
-  
-  .controls-bar {
-    padding: var(--space-4);
-  }
-}
-
-.loading-state {
+.loading-state,
+.empty-state {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: var(--space-12);
   color: var(--text-secondary);
-}
-
-.empty-state {
   text-align: center;
-  padding: var(--space-12);
-  color: var(--text-secondary);
+  flex-grow: 1;
 }
 
 .empty-state h3 {
@@ -396,14 +358,137 @@
   color: var(--text-primary);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .student-management {
+    padding: var(--space-6);
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .header-left .page-title {
+    font-size: var(--font-size-2xl);
   }
 }
 
+@media (max-width: 768px) {
+  .student-management {
+    padding: var(--space-4);
+  }
+
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .search-container {
+    max-width: none;
+    width: 100%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .students-table th,
+  .students-table td {
+    padding: var(--space-4);
+  }
+
+  .student-info {
+    gap: var(--space-3);
+  }
+
+  .avatar {
+    width: var(--space-12);
+    height: var(--space-12);
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 640px) {
+  .students-table .student-email {
+    display: none;
+  }
+
+  /* Prioritize actions column visibility, but if space is critical, hide */
+  .students-table .actions-cell {
+    /* display: none; */ /* Uncomment this if actions are too wide */
+    padding: var(--space-3); /* Smaller padding for actions */
+  }
+
+  .students-table th:nth-child(2), /* Email header */
+  .students-table td:nth-child(2) { /* Email data */
+    display: none;
+  }
+
+  .students-table th:last-child, /* Actions header */
+  .students-table td:last-child { /* Actions data */
+    /* You might still want to show actions, but make them compact */
+    padding: var(--space-3); /* Reduced padding for action cells */
+  }
+
+  .students-table {
+    min-width: 400px; /* Further reduce min-width if columns are hidden */
+  }
+
+  .page-header .page-title {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .student-management {
+    padding: var(--space-3);
+  }
+
+  .page-header {
+    padding: var(--space-4);
+  }
+
+  .controls-bar {
+    padding: var(--space-3);
+  }
+
+  .students-table th,
+  .students-table td {
+    padding: var(--space-3);
+  }
+
+  .avatar {
+    width: var(--space-10); /* Slightly smaller avatar */
+    height: var(--space-10);
+    font-size: var(--font-size-sm);
+  }
+
+  .student-name {
+    font-size: var(--font-size-sm);
+  }
+
+  .rating-badge {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-xs);
+  }
+
+  .actions-cell .btn {
+    padding: var(--space-2); /* Smaller buttons */
+  }
+}
+
+/* Focus Visible for Accessibility */
 .btn:focus-visible,
 .search-input:focus-visible {
   outline: 2px solid var(--accent-blue);

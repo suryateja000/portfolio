@@ -4,7 +4,7 @@ import StudentTable from './components/StudentTable';
 import StudentProfilePage from './components/StudentProfilePage';
 import './App.css';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://codeforces-profile-rzac.onrender.com/api';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
