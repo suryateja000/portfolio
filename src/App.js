@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
-import './index.css';
 import bot from "./images/bot.png";
 
 function App() {
@@ -85,11 +84,11 @@ function App() {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [isChatOpen, currentPageIndex, pages.length]); 
+  }, [isChatOpen, currentPageIndex, pages]);  
 
   useEffect(() => {
     window.history.pushState(null, '', pages[currentPageIndex].path);
-  }, [currentPageIndex]);
+  }, [currentPageIndex, pages]);
 
   console.log('App render - isChatOpen:', isChatOpen);
 

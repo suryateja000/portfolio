@@ -1,4 +1,3 @@
-// src/pages/Contact.js
 import React, { useState } from 'react';
 import { FiMail, FiLinkedin, FiSend, FiMessageSquare } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
@@ -25,7 +24,6 @@ function Contact() {
     setIsSubmitting(true);
 
     try {
-      // EmailJS configuration
       const serviceId = 'service_2m3g3vy'; 
       const templateId = 'template_sv3qz9v'; 
       const publicKey = 'EefO7LzPnAgMyBnX2'; 
@@ -71,7 +69,7 @@ function Contact() {
               <FiLinkedin />
               <span>LinkedIn</span>
             </a>
-            <a target='_blank' rel="noopener noreferrer">
+            <a href="tel:9440410212" target='_blank' rel="noopener noreferrer">
               <FiMessageSquare />
               <span>9440410212</span>
             </a>
