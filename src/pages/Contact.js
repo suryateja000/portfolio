@@ -1,6 +1,6 @@
 // src/pages/Contact.js
 import React, { useState } from 'react';
-import { FiMail, FiLinkedin, FiSend, FiChevronRight, FiMessageSquare } from 'react-icons/fi';
+import { FiMail, FiLinkedin, FiSend, FiMessageSquare } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
 
 function Contact() {
