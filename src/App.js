@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Layout from './components/Layout';
 import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
@@ -21,12 +21,12 @@ function App() {
     setIsChatOpen(prev => !prev);
   };
 
-  const pages = [
+  const pages = useMemo(() => [
     { component: <Home toggleChat={toggleChat} />, path: '/', name: 'Home' },
     { component: <Skills />, path: '/skills', name: 'Skills' },
     { component: <Projects />, path: '/projects', name: 'Projects' },
     { component: <Contact />, path: '/contact', name: 'Contact' }
-  ];
+  ], [toggleChat]);
 
   useEffect(() => {
     const handleWheel = (event) => {
@@ -75,7 +75,6 @@ function App() {
     };
 
     window.addEventListener('wheel', handleWheel);
-    
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
@@ -84,7 +83,7 @@ function App() {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [isChatOpen, currentPageIndex, pages]);  
+  }, [isChatOpen, currentPageIndex, pages]);
 
   useEffect(() => {
     window.history.pushState(null, '', pages[currentPageIndex].path);

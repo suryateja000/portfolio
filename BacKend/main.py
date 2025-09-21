@@ -38,6 +38,4 @@ while user_input.lower() != "exit":
     history.append(HumanMessage(content=user_input))
     result = agent.invoke({"messages": history})
     history = result["messages"]
-    print(history)
-    print(f"Assistant: {history[-1].content}")
     user_input = input("User: ")
