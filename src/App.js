@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
-import { FiMessageSquare, FiX, FiSend } from 'react-icons/fi';
 import './index.css';
 import bot from "./images/bot.png";
 
