@@ -1,0 +1,19 @@
+
+.bento-box {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 2rem;
+  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-box:hover {
+  transform: translateY(-5px);
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: auto;
+}

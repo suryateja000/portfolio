@@ -1,9 +1,11 @@
 import React from 'react';
 import { FaPython, FaReact, FaNodeJs, FaGitAlt, FaDatabase } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
-import { SiTailwindcss, SiMongodb, SiMysql, SiSupabase, SiTensorflow, SiFastapi, SiLangchain } from 'react-icons/si';
-import { TbBrandNextjs, TbBrandReactNative } from 'react-icons/tb';
+import { SiTailwindcss, SiMongodb, SiMysql, SiSupabase, SiTensorflow, SiFastapi, SiLangchain} from 'react-icons/si';
+import { TbBrandNextjs, TbBrandReactNative,  } from 'react-icons/tb';
 import { FiCpu } from 'react-icons/fi';
+import { LangGraph } from '@lobehub/icons';
+
 
 const skillGroups = {
   "Frontend & Mobile": [
@@ -22,8 +24,9 @@ const skillGroups = {
     { name: 'MySQL', icon: <SiMysql /> },
   ],
   "AI & Tools": [
-    { name: 'TensorFlow', icon: <SiTensorflow /> },
+    { name: 'LangGraph', icon: <LangGraph /> },
     { name: 'LangChain', icon: <SiLangchain /> },
+    { name: 'TensorFlow', icon: <SiTensorflow /> },
     { name: 'LLMs', icon: <FiCpu /> },
     { name: 'Git/GitHub', icon: <FaGitAlt /> },
     { name: 'Supabase', icon: <SiSupabase /> },

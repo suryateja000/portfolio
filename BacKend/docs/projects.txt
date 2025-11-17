@@ -1,0 +1,54 @@
+{
+  "name": "Surya Teja (Surya)",
+  "title": "Full Stack + AI Developer",
+  "projects": [
+    {
+      "name": "Design Review AI Chatbot",
+      "description": "Developed an AI chatbot with RAG (Retrieval-Augmented Generation) feature for design review workflows that clarifies doubts using official UI/UX guidelines from Google, Apple, and Microsoft",
+      "technologies": [
+        "Python",
+        "LangGraph",
+        "RAG",
+        "Document Processing"
+      ],
+      "key_features": [
+        "Conversational QA on design documents",
+        "Integration of official design guidelines",
+        "Review workflow automation"
+      ]
+    },
+    {
+      "name": "Student Codeforces Progress Tracker",
+      "description": "Built a MERN-stack application that converts Codeforces profiles into comprehensive dashboards for easy student progress management",
+      "technologies": [
+        "MongoDB",
+        "Express",
+        "React",
+        "Node.js",
+        "Codeforces API"
+      ],
+      "key_features": [
+        "Real-time data synchronization",
+        "Data visualization",
+        "User authentication",
+        "Advanced student management interface"
+      ]
+    },
+    {
+      "name": "RAG Document QA Chatbots",
+      "description": "Built multiple RAG-based chatbots using LangGraph for document-based conversational question answering",
+      "technologies": [
+        "Python",
+        "LangGraph",
+        "LangChain",
+        "RAG"
+      ],
+      "key_features": [
+        "File path-based document loading",
+        "Conversational QA interface",
+        "Multi-document support"
+      ]
+    }
+  ],
+
+}

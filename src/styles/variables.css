@@ -1,0 +1,41 @@
+
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap');
+
+:root {
+  --font-primary: 'Satoshi', sans-serif;
+  --bg-color: #f5f5f7;
+  --surface-color: rgb(255, 255, 255, 0.6);
+  --border-color: rgb(0, 0, 0);
+  --text-color: #1d1d1f;
+  --secondary-text-color: #6e6e73;
+  --primary-color: #8b45ff;
+  --spotlight-color: rgba(0, 113, 227, 0.1);
+  --transition-speed: 0.4s;
+  --page-container-height: calc(100vh - 10rem);
+  --page-container-mobile-height: 500px;
+}
+
+body.dark-mode {
+  --bg-color: rgb(13, 13, 13);
+  --surface-color: rgb(26, 26, 26, 0.3);
+  --border-color: rgb(255, 255, 255);
+  --text-color: #e5e5e5;
+  --secondary-text-color: #999999;
+  --primary-color: #8b45ff;
+  --spotlight-color: rgba(0, 153, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

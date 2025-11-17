@@ -1,0 +1,83 @@
+{
+  "name": "Surya Teja (Surya)",
+  "title": "Full Stack + AI Developer",
+  "education": {
+    "degree": "B.Tech (3rd Year)",
+    "institution": "Vignan Institute of Information Technology (VIIT)",
+    "cgpa": "8.85"
+  },
+  "technical_skills": {
+    "programming_languages": [
+      "Python",
+      "C",
+      "JavaScript",
+      "TypeScript"
+    ],
+    "frontend_technologies": [
+      "React",
+      "Next.js",
+      "HTML",
+      "CSS",
+      "Tailwind CSS"
+    ],
+    "backend_technologies": [
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ],
+    "ai_frameworks": [
+      "LangChain",
+      "LangGraph",
+      "RAG Systems"
+    ],
+    "tools_platforms": [
+      "VS Code",
+      "GitHub",
+      "Vercel",
+      "Netlify",
+      "Render",
+      "Docker",
+      "n8n"
+    ],
+    "databases": [
+      "MongoDB"
+    ],
+    "other_skills": [
+      "RESTful APIs",
+      "Authentication Systems",
+      "Responsive Design",
+      "UI/UX Design"
+    ]
+  },
+  "competitive_programming": {
+    "codechef": {
+      "rating": "1800+",
+      "contests_participated": "80+"
+    },
+    "leetcode": {
+      "contests_participated": "90+"
+    },
+    "achievements": [
+      "CodeVita participant",
+      "Organized CP & DSA seminar as speaker",
+      "Active hackathon participant"
+    ]
+  },
+  "core_competencies": [
+    "Full Stack Web Development",
+    "AI Integration & Chatbot Development",
+    "Competitive Programming & DSA",
+    "API Development & Integration",
+    "Database Management",
+    "Automation Workflows",
+    "Performance Optimization",
+    "Systematic Debugging"
+  ],
+  "learning_interests": [
+    "Autonomous AI Agents",
+    "Advanced Algorithm Optimization",
+    "Game Development",
+    "3D Web Development",
+    "Machine Learning Algorithms (Apriori, Association Rule Mining)"
+  ]
+}

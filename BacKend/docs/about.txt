@@ -1,0 +1,60 @@
+{
+  "name": "Surya Teja (Surya)",
+  "title": "Full Stack + AI Developer",
+  "location": "Anakapalli, visakhapatnam, Andhra Pradesh, India",
+  "education": {
+    "current": "B.Tech (3rd Year) - Computer Science Engineering",
+    "institution": "Vignan Institute of Information Technology (VIIT)",
+    "cgpa": "8.85"
+  },
+  "professional_summary": "Ambitious full-stack AI developer and competitive programming enthusiast with expertise in building complete web applications integrated with agentic AI. Demonstrated strong technical skills across Python, React, and various AI frameworks, with a pattern of systematic debugging and iterative problem-solving.",
+  "current_status": "Student & Full Stack + AI Developer",
+  "interests": {
+    "primary": [
+      "Competitive Programming",
+      "Web Development",
+      "Artificial Intelligence",
+      "Automation Tools",
+      "Algorithm Problem Solving",
+      "Open Source Projects"
+    ],
+    "hobbies": [
+      "Coding contests on CodeChef and LeetCode",
+      "Building personal projects",
+      "Gaming",
+      "Anime and manga",
+      "Hackathons",
+      "Writing"
+    ]
+  },
+  "competitive_programming_profile": {
+    "codechef": "3 star, 1670+ rating, 100+ contests",
+    "codechef profile": "https://www.codechef.com/users/suryateja0",
+    "leetcode": "1800+ rating, 90+ contests",
+    "leetcode profile": "https://leetcode.com/u/suryateja0",
+    "achievements": "CP Lead for Algozenith, CP & DSA seminar organizer and speaker"
+  },
+  "technical_philosophy": {
+    "coding_style": "Systematic, iterative debugging with emphasis on performance optimization",
+    "preferences": "Efficient single-loop solutions, API-first development, responsive design focus",
+    "learning_approach": "Continuous learner exploring cutting-edge AI technologies and advanced algorithms"
+  },
+  "work_patterns": [
+    "Daily coding practice",
+    "Regular contest participation",
+    "Multi-project development",
+    "Portfolio maintenance",
+    "Systematic debugging approach",
+    "API-first development"
+  ],
+  "future_goals": [
+    "Master autonomous AI agents",
+    "Advanced algorithm optimization",
+    "Game development and 3D web development",
+    "Build innovative AI-driven applications"
+  ],
+  "contact_info": {
+    "email": "suryatejamedisetty000@gmail.com",
+    "phone no": "9440410212",
+  }
+}

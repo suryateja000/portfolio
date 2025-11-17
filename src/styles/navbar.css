@@ -1,0 +1,71 @@
+
+.navbar {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  padding: 0.75rem 1rem;
+  background-color: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+body:not(.dark-mode) .navbar {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-logo {
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
+  background-color: var(--primary-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  font-weight: 500;
+  transition: color var(--transition-speed);
+  padding: 0.5rem;
+}
+
+.nav-links a:hover {
+  color: var(--text-color);
+}
+
+.nav-links a.active {
+  color: var(--primary-color);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-speed);
+}
+
+.theme-toggle:hover {
+  color: var(--text-color);
+}

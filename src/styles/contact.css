@@ -1,0 +1,214 @@
+/* ===================================
+   contact.css
+   Contact Page Split Layout Styles
+   =================================== */
+
+.contact-layout-container {
+  display: flex;
+  gap: 0;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  height: var(--page-container-height);
+  align-items: stretch;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.contact-info-panel,
+.contact-form-panel {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info-panel {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-right: 1px solid var(--border-color);
+  justify-content: center;
+}
+
+body.dark-mode .contact-info-panel {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.contact-form-panel {
+  flex: 1.5;
+  justify-content: center;
+}
+
+/* Info Panel Styles */
+.info-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.75rem;
+}
+
+.info-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.info-text {
+  font-size: 1rem;
+  color: var(--secondary-text-color);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.info-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-links a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.info-links a:hover {
+  color: var(--primary-color);
+}
+
+.info-links a svg {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Form Panel Styles */
+.contact-form-panel h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+}
+
+.contact-form-panel p {
+  color: var(--secondary-text-color);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.form-group-row {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--secondary-text-color);
+}
+
+.contact-form-panel input,
+.contact-form-panel textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form-panel input:focus,
+.contact-form-panel textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--spotlight-color);
+}
+
+.contact-form-panel input::placeholder,
+.contact-form-panel textarea::placeholder {
+  color: var(--secondary-text-color);
+  opacity: 0.6;
+}
+
+.contact-form-panel textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  padding: 0.8rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submit-btn:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Success/Error Messages */
+.form-message {
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-message.success {
+  background-color: rgba(72, 187, 120, 0.1);
+  border: 1px solid #48bb78;
+  color: #48bb78;
+}
+
+.form-message.error {
+  background-color: rgba(245, 101, 101, 0.1);
+  border: 1px solid #f56565;
+  color: #f56565;
+}

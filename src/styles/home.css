@@ -1,0 +1,97 @@
+/* ===================================
+   home.css
+   Home/Hero Page Styles
+   =================================== */
+
+.hero-box {
+  min-height: calc(100vh - 12rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.hero-main-text h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-family: monospace;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  color: var(--secondary-text-color);
+}
+
+.hero-main-text h1:last-child {
+  color: var(--secondary-text-color);
+  font-weight: 500;
+}
+
+.arrow {
+  position: absolute;
+  bottom: -0.9rem;
+  right: -0.7rem;
+  display: flex;
+  align-items: center;
+  width: 150px;
+  height: 230px;
+}
+.chatbot-cta {
+  position: absolute;
+  bottom: 10rem;
+  right: 3rem;
+  display: flex;
+}
+.resume-download-cta {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--secondary-text-color);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 17px;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+}
+
+.resume-download-cta:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: rgba(139, 69, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.download-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  transition: transform var(--transition-speed) ease;
+}
+
+.resume-download-cta:hover .download-icon {
+  transform: translateY(2px);
+}
+
+body.dark-mode .resume-download-cta {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .resume-download-cta:hover {
+  background-color: rgba(139, 69, 255, 0.15);
+}
