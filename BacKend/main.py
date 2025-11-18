@@ -21,7 +21,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Portfolio Assistant API", lifespan=lifespan)
 
 origins = [
-    "http://localhost:3000",
+    "*",
     "https://suryateja0.netlify.app",
 ]
 app.add_middleware(

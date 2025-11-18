@@ -70,7 +70,7 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
     setIsInitializing(true);
     setIsConnected(false);
     try {
-      const response = await fetch('http://localhost:5000/api/health', {
+      const response = await fetch('https://portfolio-t16g.onrender.com/api/health', {
         method: 'GET', headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
@@ -102,7 +102,7 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
   const getBotResponse = async (question) => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/chat', {
+      const response = await fetch('https://portfolio-t16g.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: question, session_id: sessionId }),
