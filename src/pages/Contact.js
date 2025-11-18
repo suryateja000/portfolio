@@ -61,9 +61,9 @@ function Contact() {
             Have a project in mind, a question, or just want to say hi? I'd love to hear from you. Contact me, and I'll get back to you as soon as possible.
           </p>
           <div className="info-links">
-            <a href="mailto:medisettysuryateja000@gmail.com">
+            <a href="mailto:suryatejamedisetty000@gmail.com">
               <FiMail />
-              <span>medisettysuryateja000@gmail.com</span>
+              <span>suryatejamedisetty000@gmail.com</span>
             </a>
             <a href="https://www.linkedin.com/in/surya-teja-medisetty-5b62822a3/" target='_blank' rel="noopener noreferrer">
               <FiLinkedin />

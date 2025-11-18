@@ -23,7 +23,8 @@
     "backend_technologies": [
       "Node.js",
       "Express",
-      "MongoDB"
+      "MongoDB",
+      "FastAPI"
     ],
     "ai_frameworks": [
       "LangChain",
@@ -40,7 +41,8 @@
       "n8n"
     ],
     "databases": [
-      "MongoDB"
+      "MongoDB",
+      "Supabase"
     ],
     "other_skills": [
       "RESTful APIs",
@@ -52,14 +54,16 @@
   "competitive_programming": {
     "codechef": {
       "rating": "1800+",
-      "contests_participated": "80+"
+      "contests_participated": "100+"
     },
     "leetcode": {
+      "rank" : "3 star",
+      "rating": "1700+",
       "contests_participated": "90+"
     },
     "achievements": [
-      "CodeVita participant",
       "Organized CP & DSA seminar as speaker",
+      "Qualified SIH internal round",
       "Active hackathon participant"
     ]
   },
@@ -78,6 +82,6 @@
     "Advanced Algorithm Optimization",
     "Game Development",
     "3D Web Development",
-    "Machine Learning Algorithms (Apriori, Association Rule Mining)"
+    "Machine Learning Algorithms"
   ]
 }

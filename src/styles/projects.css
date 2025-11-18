@@ -124,7 +124,7 @@
 }
 
 .project-list-item {
-  padding: 1rem 0;
+  padding: 0.7rem 0;
   cursor: pointer;
   position: relative;
   color: var(--secondary-text-color);
@@ -196,7 +196,7 @@
 }
 
 .viewport-image-wrapper {
-  flex-basis: 60%;
+  flex-basis: 70%;
   flex-shrink: 0;
   border-radius: 12px;
   overflow: hidden;

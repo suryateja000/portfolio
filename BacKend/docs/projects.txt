@@ -1,54 +1,125 @@
 {
   "name": "Surya Teja (Surya)",
   "title": "Full Stack + AI Developer",
-  "projects": [
-    {
-      "name": "Design Review AI Chatbot",
-      "description": "Developed an AI chatbot with RAG (Retrieval-Augmented Generation) feature for design review workflows that clarifies doubts using official UI/UX guidelines from Google, Apple, and Microsoft",
-      "technologies": [
-        "Python",
-        "LangGraph",
-        "RAG",
-        "Document Processing"
-      ],
-      "key_features": [
-        "Conversational QA on design documents",
-        "Integration of official design guidelines",
-        "Review workflow automation"
-      ]
-    },
-    {
-      "name": "Student Codeforces Progress Tracker",
-      "description": "Built a MERN-stack application that converts Codeforces profiles into comprehensive dashboards for easy student progress management",
-      "technologies": [
-        "MongoDB",
-        "Express",
-        "React",
-        "Node.js",
-        "Codeforces API"
-      ],
-      "key_features": [
-        "Real-time data synchronization",
-        "Data visualization",
-        "User authentication",
-        "Advanced student management interface"
-      ]
-    },
-    {
-      "name": "RAG Document QA Chatbots",
-      "description": "Built multiple RAG-based chatbots using LangGraph for document-based conversational question answering",
-      "technologies": [
-        "Python",
-        "LangGraph",
-        "LangChain",
-        "RAG"
-      ],
-      "key_features": [
-        "File path-based document loading",
-        "Conversational QA interface",
-        "Multi-document support"
-      ]
-    }
-  ],
-
-}
+  projects: [
+  {
+    name: "Stream2Pod",
+    description: "An interactive platform that transforms YouTube videos into engaging podcast experiences with real-time AI-powered Q&A capabilities.",
+    technologies: ["React", "FastAPI", "Google Gemini AI", "Microsoft Edge TTS"],
+    key_features: [
+      "YouTube to podcast transformation",
+      "Real-time AI Q&A",
+      "TTS integration for audio playback"
+    ],
+    liveUrl: "#",
+    githubUrl: "https://github.com/suryateja000/Stream2pod"
+  },
+  {
+    name: "Design Review AI Chatbot",
+    description: "An AI-powered chatbot with RAG (Retrieval-Augmented Generation) that answers design queries using official UI/UX guidelines from Google, Apple, and Microsoft.",
+    technologies: ["Python", "LangGraph", "RAG", "Document Processing"],
+    key_features: [
+      "Conversational QA on design documents",
+      "Integration of official design guidelines",
+      "Review workflow automation"
+    ],
+    liveUrl: "https://designcritic.streamlit.app/",
+    githubUrl: "https://github.com/suryateja000/DesignCritic"
+  },
+  {
+    name: "Habit Tracker Web App",
+    description: "A full-stack social habit tracking platform that helps users build consistent habits and stay accountable through a community of friends.",
+    technologies: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "JWT Auth"],
+    key_features: [
+      "Social accountability features",
+      "Daily habit tracking dashboard",
+      "Authentication and user profiles"
+    ],
+    liveUrl: "https://habit-tracker0.netlify.app/",
+    githubUrl: "https://github.com/suryateja000/DesignCritic"
+  },
+  {
+    name: "Student Progress System",
+    description: "A MERN stack app to track student Codeforces activity, update progress daily at 2 AM, and email alerts to students inactive for 7+ days.",
+    technologies: ["React", "MongoDB", "Node.js", "Express", "Codeforces API"],
+    key_features: [
+      "Real-time Codeforces sync",
+      "Progress visualization dashboard",
+      "Inactivity email alerts"
+    ],
+    liveUrl: "https://profilesofcodeforces.netlify.app/",
+    githubUrl: "https://github.com/suryateja000/Codeforces"
+  },
+  {
+    name: "AI Answer Key Generator",
+    description: "An intelligent Streamlit app using Gemini AI to generate answer keys from PDF question banks with RAG for accuracy.",
+    technologies: ["Python", "Streamlit", "LangChain", "Gemini AI"],
+    key_features: [
+      "PDF question bank ingestion",
+      "RAG-based answer generation",
+      "Streamlit UI for educators"
+    ],
+    liveUrl: "https://question-bank-to-answer-key.streamlit.app/",
+    githubUrl: "https://github.com/suryateja000/Qb_to_Ak"
+  },
+  {
+    name: "EcoTrack - Recycling App",
+    description: "A React Native app linking users and collectors to recycling centers with real-time tracking and QR scans for a transparent recycling process.",
+    technologies: ["React Native", "Node.js", "Socket.IO", "MongoDB"],
+    key_features: [
+      "Live tracking of recycling pickups",
+      "QR-based verification",
+      "Collector-user coordination"
+    ],
+    liveUrl: "#",
+    githubUrl: "https://github.com/suryateja000/Eco-track-frontend-"
+  },
+  {
+    name: "Sentiment Analyzer",
+    description: "A real-time sentiment analysis tool that evaluates text to generate detailed polarity and subjectivity scores, along with intuitive visual feedback for instant emotional insights.",
+    technologies: ["React", "Python", "FastAPI"],
+    key_features: [
+      "Live sentiment scoring",
+      "Polarity and subjectivity metrics",
+      "Visual feedback interface"
+    ],
+    liveUrl: "https://monumental-axolotl-41dbde.netlify.app/",
+    githubUrl: "https://github.com/suryateja000/Sentiment-analysis"
+  },
+  {
+    name: "Course Navigator",
+    description: "A web platform guiding post-12th students to academic courses with personalized suggestions tailored to their skills and interests.",
+    technologies: ["React", "Node.js", "Express", "MongoDB"],
+    key_features: [
+      "Skill-based course recommendations",
+      "Interactive course explorer",
+      "Student-friendly UI"
+    ],
+    liveUrl: "https://suryateja000.github.io/Course-Navigator/",
+    githubUrl: "https://github.com/suryateja000/Course-Navigator"
+  },
+  {
+    name: "Service Marketplace",
+    description: "A platform where services can be posted or searched by location, enabling easy contact—especially during urgent or critical situations.",
+    technologies: ["React", "Supabase", "PostgreSQL"],
+    key_features: [
+      "Location-based service listings",
+      "Real-time contact options",
+      "Crisis-ready design"
+    ],
+    liveUrl: "https://service-market.netlify.app",
+    githubUrl: "#"
+  },
+  {
+    name: "Handwritten Digit Recognition",
+    description: "Recognizes handwritten digits instantly—even with messy input—through efficient, real-time digit analysis.",
+    technologies: ["TensorFlow", "Keras", "Python", "Jupyter"],
+    key_features: [
+      "Digit recognition with ML",
+      "Real-time prediction",
+      "Robust to messy input"
+    ],
+    liveUrl: "#",
+    githubUrl: "https://github.com/suryateja000/Digit-analyse"
+  }
+]

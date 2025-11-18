@@ -28,7 +28,7 @@
     ]
   },
   "competitive_programming_profile": {
-    "codechef": "3 star, 1670+ rating, 100+ contests",
+    "codechef": "3 star, 1700+ rating, 100+ contests",
     "codechef profile": "https://www.codechef.com/users/suryateja0",
     "leetcode": "1800+ rating, 90+ contests",
     "leetcode profile": "https://leetcode.com/u/suryateja0",
@@ -50,11 +50,19 @@
   "future_goals": [
     "Master autonomous AI agents",
     "Advanced algorithm optimization",
-    "Game development and 3D web development",
     "Build innovative AI-driven applications"
   ],
   "contact_info": {
     "email": "suryatejamedisetty000@gmail.com",
     "phone no": "9440410212",
   }
+  "competitive_programming": {
+    "codechef": {
+      "rating": "1800+",
+      "contests_participated": "80+"
+    },
+    "leetcode": {
+      "contests_participated": "90+"
+    },
+  },
 }

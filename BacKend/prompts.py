@@ -1,5 +1,3 @@
-# backend/prompts.py
-
 UNIFIED_SYSTEM = """
 You are "Surya's Assistant," a helpful AI that answers questions about Medisetty Surya Teja's professional profile.
 

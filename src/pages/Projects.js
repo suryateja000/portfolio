@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiGithub, FiEye } from 'react-icons/fi';
 import { FaReact, FaNodeJs, FaPython, FaMicrosoft  } from 'react-icons/fa';
-import { SiMongodb, SiExpress, SiSupabase, SiPostgresql, SiTensorflow, SiKeras, SiJupyter, SiStreamlit, SiSocketdotio, SiLangchain, SiFastapi, SiGoogle  } from 'react-icons/si';
+import { SiAdobeacrobatreader, SiOpenai, SiGraphql, SiPython, SiMongodb, SiExpress, SiSupabase,SiTailwindcss,SiJsonwebtokens, SiPostgresql, SiTensorflow, SiKeras, SiJupyter, SiStreamlit, SiSocketdotio, SiLangchain, SiFastapi, SiGoogle  } from 'react-icons/si';
 
 import stu_visual from '../images/stu.png';
 import eco_visual from '../images/eco.png';
@@ -11,6 +11,9 @@ import cn_visual from '../images/cn.png';
 import serv_visual from '../images/serv.png';
 import qb_visual from '../images/qb.png';
 import s2p_visual from '../images/S2p.png';
+import hab_visual from '../images/hab.png';
+import des_visual from '../images/des.png';
+
 
 const portfolioData = {
   projects: [
@@ -27,6 +30,36 @@ const portfolioData = {
         { name: 'Google Gemini AI', icon: <SiGoogle /> },
         { name: 'Microsoft Edge TTS', icon: <FaMicrosoft  /> }
     ],
+  },
+  {
+      title: 'Design Review AI Chatbot',
+      description: 'An AI-powered chatbot with RAG (Retrieval-Augmented Generation) that answers design queries using official UI/UX guidelines from Google, Apple, and Microsoft.',
+      visual: des_visual, 
+      liveUrl: 'https://designcritic.streamlit.app/',
+      githubUrl: 'https://github.com/suryateja000/DesignCritic',
+      tags: ['AI/ML'],
+      tech_stack: [
+        { name: 'Python', icon: <SiPython /> },
+        { name: 'LangGraph', icon: <SiGraphql /> },
+        { name: 'RAG', icon: <SiOpenai /> },
+        { name: 'Document Processing', icon: <SiAdobeacrobatreader /> },
+      ],
+    },
+  {
+      title: 'Habit Tracker Web App',
+      description: 'A full-stack social habit tracking platform that helps users build consistent habits and stay accountable through a community of friends.',
+      visual: hab_visual,
+      liveUrl: 'https://habit-tracker0.netlify.app/',
+      githubUrl: 'https://github.com/suryateja000/DesignCritic',
+      tags: ['Web', 'Full Stack'],
+      tech_stack: [
+        { name: 'React', icon: <FaReact /> },
+        { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+        { name: 'Node.js', icon: <FaNodeJs /> },
+        { name: 'Express', icon: <SiExpress /> },
+        { name: 'MongoDB', icon: <SiMongodb /> },
+        { name: 'JWT Auth', icon: <SiJsonwebtokens /> },
+      ],
   },
   {
     title: 'Student Progress System',
@@ -91,7 +124,7 @@ const portfolioData = {
         tags: ['AI/ML', 'Desktop'],
         tech_stack: [ { name: 'TensorFlow', icon: <SiTensorflow /> }, { name: 'Keras', icon: <SiKeras /> }, { name: 'Python', icon: <FaPython /> }, { name: 'Jupyter', icon: <SiJupyter /> } ],
     },
-
+    
   ],
 };
 
