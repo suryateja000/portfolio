@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_llm(model="gemini-1.5-flash", temperature=0.3):
+def get_llm(model="gemini-2.5-flash", temperature=0.3):
     api_key = os.getenv("GOOGLE_API_KEY")
     
     if not api_key:
