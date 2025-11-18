@@ -1,9 +1,6 @@
-uvicorn[standard]==0.31.0
-streamlit
-pillow
-numpy
-scikit-learn
-python-dotenv
-langchain-google-genai
-langgraph
-langchain
+fastapi==0.115.0
+uvicorn[standard]==0.38.0
+python-dotenv==1.2.1
+langchain==1.0.7
+langchain-google-genai==3.0.3
+langgraph==1.0.3
