@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FiX, FiSend, FiMaximize2, FiMinimize2, FiMoon, FiSun } from 'react-icons/fi';
+import { FiX, FiSend, FiMaximize2, FiMinimize2} from 'react-icons/fi';
 
 const Chatbot = ({ isChatOpen, toggleChat }) => {
   // --- STATE MANAGEMENT ---

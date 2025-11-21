@@ -68,7 +68,7 @@ function Layout({ pages, currentPageIndex, setCurrentPageIndex }) {
           {pages.map((page, index) => (
             <li key={page.name}>
               <a
-                href="#"
+                href="/"
                 className={index === currentPageIndex ? 'active' : ''}
                 onClick={(e) => {
                   e.preventDefault();
