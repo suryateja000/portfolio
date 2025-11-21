@@ -6,6 +6,7 @@
     "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.2",
     "@lobehub/icons": "^2.43.1",
+    "antd": "^5.29.1",
     "axios": "^1.10.0",
     "build": "^0.1.4",
     "bulid": "^1.0.0",
