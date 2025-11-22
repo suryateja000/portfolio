@@ -14,7 +14,7 @@ function Home({ toggleChat }) {
       <div className="bento-box hero-box">
         <div className="hero-main-text">
           <h1>Hello there, I'm Surya.</h1>
-          <h1>I write code that thinks — nice to meet you!</h1>
+          <h1>I write code that thinks, nice meeting you!</h1>
         </div>
 
         <p className='subtitle'>{"< AI-FullStack-Engineer />"}</p>
