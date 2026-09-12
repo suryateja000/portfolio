@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiX, FiSend, FiMaximize2, FiMinimize2} from 'react-icons/fi';
+import ReactMarkdown from 'react-markdown';
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? 'https://portfolio-t16g.onrender.com' : 'http://localhost:8000');
 
 const Chatbot = ({ isChatOpen, toggleChat }) => {
   // --- STATE MANAGEMENT ---
@@ -40,7 +43,8 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
   // Effect for handling "click outside to close"
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isChatOpen && chatWindowRef.current && !chatWindowRef.current.contains(event.target)) {
+      const isToggleButton = event.target.closest('.chat-toggle-button');
+      if (isChatOpen && chatWindowRef.current && !chatWindowRef.current.contains(event.target) && !isToggleButton) {
         toggleChat();
       }
     };
@@ -50,27 +54,24 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
     };
   }, [isChatOpen, toggleChat]);
 
-  // Effect for the initial backend warm-up
+  // Effect for the initial backend warm-up (trigger on load)
   useEffect(() => {
-    if (isChatOpen && !hasWarmedUp.current) {
+    if (!hasWarmedUp.current) {
       warmUpBackend();
       hasWarmedUp.current = true;
     }
-  }, [isChatOpen]);
+  }, []);
 
   // --- API & EVENT HANDLERS ---
 
-  // Toggles the color theme
-  const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
+  // Theme is toggled by Layout.js, Chatbot just follows data-theme attribute
 
   // Initial health check to the backend
   const warmUpBackend = async () => {
     setIsInitializing(true);
     setIsConnected(false);
     try {
-      const response = await fetch('https://portfolio-t16g.onrender.com/api/health', {
+      const response = await fetch(`${API_BASE_URL}/api/health`, {
         method: 'GET', headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
@@ -102,7 +103,7 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
   const getBotResponse = async (question) => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://portfolio-t16g.onrender.com/api/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: question, session_id: sessionId }),
@@ -130,6 +131,8 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
     setMessages(prev => [...prev, { text, sender: 'user' }]);
     if (typeof outgoingText !== 'string') {
       setInputValue('');
+    } else {
+      setInputValue(''); // Also clear if suggestion was clicked
     }
 
     // Get the bot's response and add it to the chat
@@ -143,7 +146,7 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
   };
 
   // Handles the 'Enter' key press in the input field
-  const handleKeyPress = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !isLoading) {
       e.preventDefault();
       handleSendMessage();
@@ -189,7 +192,9 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
             <div className="message-bubble">
-              <div className="message-text">{msg.text}</div>
+              <div className="message-text">
+                {msg.sender === 'bot' ? <ReactMarkdown>{msg.text}</ReactMarkdown> : msg.text}
+              </div>
               {msg.suggestions && msg.suggestions.length > 0 && (
                 <div className="suggestions">
                   {msg.suggestions.map((sugg, i) => (
@@ -218,7 +223,7 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown}
             placeholder={isConnected ? "Ask a question..." : "Connecting..."}
             disabled={isLoading || !isConnected || isInitializing}
             className="chat-input-field"

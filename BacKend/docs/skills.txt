@@ -1,67 +1,84 @@
 {
-  "name": "Surya Teja (Surya)",
-  "title": "Full Stack + AI Developer",
+  "name": "Medisetty Surya Teja",
+  "title": "AI & Software Engineer",
   "education": {
-    "degree": "B.Tech (3rd Year)",
-    "institution": "Vignan Institute of Information Technology (VIIT)",
-    "cgpa": "8.85"
+    "degree": "B.Tech (4th Year)",
+    "institution": "Vignan's Institute of Information Technology (VIIT)",
+    "expected_graduation": "2027",
+    "cgpa": "8.7"
   },
   "technical_skills": {
     "programming_languages": [
       "Python",
-      "C",
+      "Java",
       "JavaScript",
-      "TypeScript"
+      "TypeScript",
+      "C",
+      "SQL"
     ],
     "frontend_technologies": [
       "React",
+      "React Native",
       "Next.js",
+      "Tailwind CSS",
+      "Streamlit",
       "HTML",
-      "CSS",
-      "Tailwind CSS"
+      "CSS"
     ],
     "backend_technologies": [
       "Node.js",
-      "Express",
-      "MongoDB",
-      "FastAPI"
+      "FastAPI",
+      "Express"
     ],
     "ai_frameworks": [
-      "LangChain",
       "LangGraph",
-      "RAG Systems"
+      "LangChain",
+      "RAG Systems",
+      "mem0",
+      "LLMs"
     ],
     "tools_platforms": [
-      "VS Code",
+      "Git",
       "GitHub",
+      "GitHub Actions",
+      "Docker",
+      "AWS",
+      "Socket.io",
+      "VS Code",
+      "Figma",
+      "n8n",
       "Vercel",
       "Netlify",
-      "Render",
-      "Docker",
-      "n8n"
+      "Render"
     ],
     "databases": [
       "MongoDB",
-      "Supabase"
+      "PostgreSQL",
+      "Supabase",
+      "AlloyDB"
     ],
     "other_skills": [
       "RESTful APIs",
+      "Multi-Agent Systems",
       "Authentication Systems",
       "Responsive Design",
       "UI/UX Design"
     ]
   },
   "competitive_programming": {
-    "codechef": {
-      "rating": "1800+",
-      "contests_participated": "100+"
-    },
     "leetcode": {
-      "rank" : "3 star",
-      "rating": "1700+",
+      "rank": "Knight",
+      "rating": "1880 (Peak)",
       "contests_participated": "90+"
     },
+    "codechef": {
+      "rank": "3-Star",
+      "rating": "1700 (Peak)",
+      "contests_participated": "100+"
+    },
     "achievements": [
+      "Research Publication (IJITEST): Paper on Deep Reinforcement Learning",
+      "CP Lead, AlgoZenith College Club",
       "Organized CP & DSA seminar as speaker",
       "Qualified SIH internal round",
       "Active hackathon participant"
@@ -69,12 +86,12 @@
   },
   "core_competencies": [
     "Full Stack Web Development",
-    "AI Integration & Chatbot Development",
-    "Competitive Programming & DSA",
+    "AI Integration & Multi-Agent Systems",
+    "Data Structures & Algorithms",
+    "Object-Oriented Design",
     "API Development & Integration",
     "Database Management",
     "Automation Workflows",
-    "Performance Optimization",
     "Systematic Debugging"
   ],
   "learning_interests": [

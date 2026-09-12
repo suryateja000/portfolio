@@ -42,10 +42,17 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS Configuration - Allow all origins for now
+# CORS Configuration - Restrict in production
+origins = [
+    "http://localhost:3000",
+    "https://suryateja000.github.io",
+    "https://portfolio-t16g.onrender.com", 
+    # Add other frontend deployment URLs here
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all for testing, restrict later
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -62,8 +69,10 @@ class ChatResponse(BaseModel):
     suggestions: List[str] = Field(default_factory=list, description="Up to 3 follow-up suggestions")
 
 
-# In-memory session storage (use Redis in production)
-SESSIONS: Dict[str, List[Dict[str, str]]] = {}
+# In-memory session storage (simple bounded cache for Render)
+from collections import OrderedDict
+MAX_SESSIONS = 100
+SESSIONS: OrderedDict[str, List[Dict[str, str]]] = OrderedDict()
 
 
 def _sanitize_ws(s: str) -> str:
@@ -113,8 +122,14 @@ async def chat(req: ChatRequest):
         # Run chat
         result = run_chat(question=question, history=history)
         
-        # Update session
+        # Update session with LRU behavior
+        if session_id in SESSIONS:
+            del SESSIONS[session_id]
         SESSIONS[session_id] = result.get("history", history)
+        
+        # Enforce max sessions
+        if len(SESSIONS) > MAX_SESSIONS:
+            SESSIONS.popitem(last=False) # Remove oldest session
         
         # Extract response
         answer = result.get("answer", "I apologize, but I couldn't generate a response.")

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FiGithub, FiEye } from 'react-icons/fi';
-import { FaReact, FaNodeJs, FaPython, FaMicrosoft  } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaPython, FaMicrosoft, FaAws } from 'react-icons/fa';
 import { SiAdobeacrobatreader, SiOpenai, SiGraphql, SiPython, SiMongodb, SiExpress, SiSupabase,SiTailwindcss,SiJsonwebtokens, SiPostgresql, SiTensorflow, SiKeras, SiJupyter, SiStreamlit, SiSocketdotio, SiLangchain, SiFastapi, SiGoogle  } from 'react-icons/si';
 
+import bot_visual from '../images/bot.png';
 import stu_visual from '../images/stu.png';
 import eco_visual from '../images/eco.png';
 import sen_visual from '../images/sen.png';
@@ -17,6 +18,33 @@ import des_visual from '../images/des.png';
 
 const portfolioData = {
   projects: [
+    {
+      title: 'Agent D-I-D',
+      description: 'An event-driven AI learning architecture featuring dual personas (Jarvis and Ultron) to simulate interactive learning, integrated with mem0 for persistent memory and Rough.js for dynamic visual feedback.',
+      visual: bot_visual,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/Karthik-25-code/AGENT-D-I-D',
+      tags: ['AI/ML'],
+      tech_stack: [
+        { name: 'Python', icon: <FaPython /> },
+        { name: 'FastAPI', icon: <SiFastapi /> },
+        { name: 'LangGraph', icon: <SiGraphql /> },
+        { name: 'AWS', icon: <FaAws /> }
+      ],
+    },
+    {
+      title: 'Debet AI',
+      description: 'A multi-agent debate system engineered for legal simulations, utilizing robust AI orchestration workflows to model arguments.',
+      visual: bot_visual,
+      liveUrl: '#',
+      githubUrl: '#',
+      tags: ['AI/ML'],
+      tech_stack: [
+        { name: 'LangGraph', icon: <SiGraphql /> },
+        { name: 'LangChain', icon: <SiLangchain /> },
+        { name: 'Node.js', icon: <FaNodeJs /> }
+      ],
+    },
     {
     title: 'Stream2Pod',
     description: 'An interactive platform that transforms YouTube videos into engaging podcast experiences with real-time AI-powered Q&A capabilities.',
@@ -50,7 +78,7 @@ const portfolioData = {
       description: 'A full-stack social habit tracking platform that helps users build consistent habits and stay accountable through a community of friends.',
       visual: hab_visual,
       liveUrl: 'https://habit-tracker0.netlify.app/',
-      githubUrl: 'https://github.com/suryateja000/DesignCritic',
+      githubUrl: 'https://github.com/suryateja000/Habit-Tracker',
       tags: ['Web', 'Full Stack'],
       tech_stack: [
         { name: 'React', icon: <FaReact /> },
@@ -167,7 +195,9 @@ function Projects() {
     setActiveProjectIndex(0);
   }, [activeFilter]);
   
-  const activeProject = filteredProjects[activeProjectIndex] || filteredProjects[0];
+  // Safe way to ensure we don't go out of bounds
+  const safeIndex = Math.min(activeProjectIndex, Math.max(0, filteredProjects.length - 1));
+  const activeProject = filteredProjects[safeIndex] || filteredProjects[0];
 
   return (
     <div className="page-container">
@@ -176,7 +206,7 @@ function Projects() {
           <div className="filter-tabs">
             {filterCategories.map(category => (
               <button key={category.id} className={`filter-tab ${activeFilter === category.id ? 'active' : ''}`} onClick={() => setActiveFilter(category.id)}>
-                <span className="filter-label"><p>{category.label}</p></span>
+                <span className="filter-label">{category.label}</span>
               </button>
             ))}
           </div>

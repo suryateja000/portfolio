@@ -1,68 +1,77 @@
 {
-  "name": "Surya Teja (Surya)",
-  "title": "Full Stack + AI Developer",
-  "location": "Anakapalli, visakhapatnam, Andhra Pradesh, India",
+  "name": "Medisetty Surya Teja",
+  "title": "AI & Software Engineer",
+  "location": "Anakapalli, Andhra Pradesh, India",
   "education": {
-    "current": "B.Tech (3rd Year) - Computer Science Engineering",
-    "institution": "Vignan Institute of Information Technology (VIIT)",
-    "cgpa": "8.85"
+    "current": "Bachelor of Technology in Computer Science",
+    "institution": "Vignan's Institute of Information Technology",
+    "timeline": "2023 - Expected 2027",
+    "cgpa": "8.7"
   },
-  "professional_summary": "Ambitious full-stack AI developer and competitive programming enthusiast with expertise in building complete web applications integrated with agentic AI. Demonstrated strong technical skills across Python, React, and various AI frameworks, with a pattern of systematic debugging and iterative problem-solving.",
-  "current_status": "Student & Full Stack + AI Developer",
-  "interests": {
-    "primary": [
-      "Competitive Programming",
-      "Web Development",
-      "Artificial Intelligence",
-      "Automation Tools",
-      "Algorithm Problem Solving",
-      "Open Source Projects"
-    ],
-    "hobbies": [
-      "Coding contests on CodeChef and LeetCode",
-      "Building personal projects",
-      "Gaming",
-      "Anime and manga",
-      "Hackathons",
-      "Writing"
-    ]
-  },
-  "competitive_programming_profile": {
-    "codechef": "3 star, 1700+ rating, 100+ contests",
-    "codechef profile": "https://www.codechef.com/users/suryateja0",
-    "leetcode": "1800+ rating, 90+ contests",
-    "leetcode profile": "https://leetcode.com/u/suryateja0",
-    "achievements": "CP Lead for Algozenith, CP & DSA seminar organizer and speaker"
-  },
-  "technical_philosophy": {
-    "coding_style": "Systematic, iterative debugging with emphasis on performance optimization",
-    "preferences": "Efficient single-loop solutions, API-first development, responsive design focus",
-    "learning_approach": "Continuous learner exploring cutting-edge AI technologies and advanced algorithms"
-  },
-  "work_patterns": [
-    "Daily coding practice",
-    "Regular contest participation",
-    "Multi-project development",
-    "Portfolio maintenance",
-    "Systematic debugging approach",
-    "API-first development"
+  "experience": [
+    {
+      "role": "SDE Intern",
+      "company": "Ayursh",
+      "duration": "Mar 2026 - Present"
+    },
+    {
+      "role": "Backend Developer Intern",
+      "company": "ZORO Innovations",
+      "duration": "Jul 2025 - Aug 2025"
+    }
   ],
-  "future_goals": [
-    "Master autonomous AI agents",
-    "Advanced algorithm optimization",
-    "Build innovative AI-driven applications"
+  "projects": [
+    {
+      "name": "Agent D-I-D",
+      "tech_stack": ["Python", "FastAPI", "LangGraph", "mem0", "Rough.js"]
+    },
+    {
+      "name": "DesignCritic AI",
+      "tech_stack": ["Python", "Streamlit", "LangGraph", "LLMs", "RAG"]
+    },
+    {
+      "name": "EcoTrack",
+      "tech_stack": ["React Native", "Node.js", "Express", "MongoDB", "Socket.io"]
+    },
+    {
+      "name": "Debet AI",
+      "tech_stack": ["LangGraph", "LangChain", "Node.js"]
+    },
+    {
+      "name": "Stream2Pod",
+      "tech_stack": ["Python", "FastAPI"]
+    }
+  ],
+  "technical_skills": {
+    "languages": ["Python", "Java", "JavaScript", "SQL"],
+    "backend_and_ai": ["Node.js", "FastAPI", "LangGraph", "mem0", "LangChain", "RAG"],
+    "tools_and_cloud": ["Git", "Docker", "GitHub Actions", "Socket.io", "MongoDB", "REST APIs"],
+    "core_competencies": ["Data Structures & Algorithms", "Object-Oriented Design", "API Integration", "Multi-Agent Systems"]
+  },
+  "achievements": [
+    {
+      "title": "Research Publication (IJITEST): Paper on Deep Reinforcement Learning",
+      "link": "https://drive.google.com/file/d/1y7MSeaIMZ4a-TQhv_CCmpfhe6rJXEP0I/view"
+    },
+    {
+      "title": "LeetCode Knight (1880 peak rating)"
+    },
+    {
+      "title": "CodeChef 3-Star (1700 peak rating)"
+    },
+    {
+      "title": "CP Lead, AlgoZenith College Club"
+    }
   ],
   "contact_info": {
     "email": "suryatejamedisetty000@gmail.com",
-    "phone no": "9440410212",
+    "phone": "+91 9440410212",
+    "links": {
+      "portfolio": "https://suryateja0.netlify.app/",
+      "linkedin": "https://www.linkedin.com/in/surya-teja-medisetty-5b62822a3/",
+      "github": "https://github.com/suryateja000",
+      "codechef": "https://www.codechef.com/users/suryateja0",
+      "leetcode": "https://leetcode.com/u/suryateja0/"
+    }
   }
-  "competitive_programming": {
-    "codechef": {
-      "rating": "1800+",
-      "contests_participated": "80+"
-    },
-    "leetcode": {
-      "contests_participated": "90+"
-    },
-  },
 }

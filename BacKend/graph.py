@@ -63,7 +63,7 @@ class SuggestionList(BaseModel):
     suggestions: List[str] = Field(default_factory=list, max_items=5) # Generate more to filter from
 
 def _parse_suggestions(text: str) -> List[str]:
-    cleaned = text.replace("``````", "")
+    cleaned = text.replace("```json", "").replace("```", "")
     start, end = cleaned.find("{"), cleaned.rfind("}")
     if start != -1 and end != -1 and start < end:
         chunk = cleaned[start:end+1]

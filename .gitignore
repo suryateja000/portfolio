@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+venv/
+.venv/
+BacKend/.env
+BacKend/__pycache__/
+

@@ -1,5 +1,4 @@
-# rag.py
-import os, re, glob, json
+import os, re, glob, json, PyPDF2
 from typing import List, Dict, Any
 
 ALL_ENTRIES: List[Dict[str, Any]] = []
@@ -42,31 +41,26 @@ def _flatten_list(values) -> List[str]:
     return out
 
 def _entries_from_about(data: Dict[str, Any], path: str) -> List[Dict[str, Any]]:
+    """Parse about.txt — dump the ENTIRE JSON so every field is searchable."""
     topic = data.get("title") or data.get("name") or "About"
-    content_parts = []
-    for k in ["professional_summary", "current_status"]:
-        if data.get(k):
-            content_parts.append(str(data[k]))
-    if isinstance(data.get("interests", {}).get("primary"), list):
-        content_parts.append("Primary interests: " + ", ".join(_flatten_list(data["interests"]["primary"])))
-    if isinstance(data.get("future_goals"), list):
-        content_parts.append("Goals: " + ", ".join(_flatten_list(data["future_goals"])))
-    content = "\n".join(content_parts)
-    tags = ["about", "profile", data.get("title", ""), data.get("name", "")]
-    return [_mk_entry(topic=topic, section="Profile", system="Portfolio", tags=[t for t in tags if t], content=content, source_url=path)]
+    content = json.dumps(data, indent=2, ensure_ascii=False)
+    name = data.get("name", "")
+    title = data.get("title", "")
+    tags = ["about", "profile", "education", "experience", "achievements", "contact", "cgpa"]
+    if name:
+        tags.append(name)
+    if title:
+        tags.append(title)
+    return [_mk_entry(topic=topic, section="Profile", system="Portfolio", tags=tags, content=content, source_url=path)]
 
 def _entries_from_skills(data: Dict[str, Any], path: str) -> List[Dict[str, Any]]:
+    """Parse skills.txt — dump the ENTIRE JSON so every field is searchable."""
     topic = "Skills"
+    content = json.dumps(data, indent=2, ensure_ascii=False)
+    tags = ["skills", "technical", "competencies", "competitive", "programming", "leetcode", "codechef"]
     tech = data.get("technical_skills", {})
-    buckets = []
-    for key, vals in tech.items():
-        if isinstance(vals, list):
-            buckets.append(f"{key.replace('_',' ').title()}: " + ", ".join(_flatten_list(vals)))
-    comps = data.get("core_competencies", [])
-    if comps:
-        buckets.append("Core competencies: " + ", ".join(_flatten_list(comps)))
-    content = "\n".join(buckets)
-    tags = ["skills"] + list(tech.keys())
+    for key in tech.keys():
+        tags.append(key)
     return [_mk_entry(topic=topic, section="Capabilities", system="Portfolio", tags=tags, content=content, source_url=path)]
 
 def _entries_from_projects(data: Dict[str, Any], path: str) -> List[Dict[str, Any]]:
@@ -119,9 +113,15 @@ def parse_file(filepath: str) -> List[Dict[str, Any]]:
     if isinstance(jsonish, dict):
         lower_keys = {k.lower() for k in jsonish.keys()}
         fname = os.path.splitext(os.path.basename(filepath))[0].lower()
-        if "projects" in lower_keys or fname == "projects":
+        # IMPORTANT: Check filename FIRST to avoid misrouting
+        # (about.txt has 'projects' and 'technical_skills' keys too)
+        if fname == "about":
+            return _entries_from_about(jsonish, filepath)
+        if fname == "skills":
+            return _entries_from_skills(jsonish, filepath)
+        if fname == "projects" or "projects" in lower_keys:
             return _entries_from_projects(jsonish, filepath)
-        if "technical_skills" in lower_keys or fname == "skills":
+        if "technical_skills" in lower_keys:
             return _entries_from_skills(jsonish, filepath)
         return _entries_from_about(jsonish, filepath)
 
@@ -133,14 +133,31 @@ def parse_file(filepath: str) -> List[Dict[str, Any]]:
         topic = lines[0][2:].strip() or topic
     return [_mk_entry(topic=topic, section="Profile", system="Portfolio", tags=tags, content=text, source_url=filepath)]
 
+def parse_pdf(filepath: str) -> List[Dict[str, Any]]:
+    try:
+        with open(filepath, "rb") as f:
+            reader = PyPDF2.PdfReader(f)
+            text = ""
+            for page in reader.pages:
+                text += page.extract_text() + "\n"
+        
+        filename = os.path.splitext(os.path.basename(filepath))[0]
+        return [_mk_entry(topic=filename, section="Resume", system="Portfolio", tags=["resume", "pdf", filename], content=text, source_url=filepath)]
+    except Exception as e:
+        print(f"Error parsing PDF {filepath}: {e}")
+        return []
+
 def load_all(docs_dir: str) -> None:
     global ALL_ENTRIES
     ALL_ENTRIES = []
     paths = []
-    for ext in ("*.rd", "*.md", "*.txt"):
+    for ext in ("*.md", "*.txt", "*.pdf"):
         paths.extend(glob.glob(os.path.join(docs_dir, ext)))
     for p in paths:
-        ALL_ENTRIES.extend(parse_file(p))
+        if p.endswith(".pdf"):
+            ALL_ENTRIES.extend(parse_pdf(p))
+        else:
+            ALL_ENTRIES.extend(parse_file(p))
     ALL_ENTRIES = [e for e in ALL_ENTRIES if (e.get("content") or "").strip()]
 
 def retrieve(query: str, k: int = 8) -> List[Dict[str, Any]]:

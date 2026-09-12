@@ -10,6 +10,7 @@ function Contact() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formMessage, setFormMessage] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,9 +25,9 @@ function Contact() {
     setIsSubmitting(true);
 
     try {
-      const serviceId = 'service_2m3g3vy'; 
-      const templateId = 'template_sv3qz9v'; 
-      const publicKey = 'EefO7LzPnAgMyBnX2'; 
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_2m3g3vy'; 
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_sv3qz9v'; 
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'EefO7LzPnAgMyBnX2'; 
 
       const templateParams = {
         from_name: formData.name,
@@ -37,11 +38,11 @@ function Contact() {
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
-      alert(`Thank you, ${formData.name}, for your message! I have received your email and will get back to you soon.`);
+      setFormMessage({ type: 'success', text: `Thank you, ${formData.name}, for your message! I have received your email and will get back to you soon.` });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('EmailJS Error:', error);
-      alert('Sorry, there was an error sending your message. Please try again or contact me directly via email.');
+      setFormMessage({ type: 'error', text: 'Sorry, there was an error sending your message. Please try again or contact me directly via email.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -69,15 +70,20 @@ function Contact() {
               <FiLinkedin />
               <span>LinkedIn</span>
             </a>
-            <a href="tel:9440410212" target='_blank' rel="noopener noreferrer">
+            <a href="tel:+919440410212" target='_blank' rel="noopener noreferrer">
               <FiMessageSquare />
-              <span>9440410212</span>
+              <span>+91 9440410212</span>
             </a>
           </div>
         </div>
 
         {/* Right Form Panel */}
         <div className="contact-form-panel">
+          {formMessage && (
+            <div className={`form-message ${formMessage.type}`}>
+              {formMessage.text}
+            </div>
+          )}
           <form onSubmit={handleSubmit}>
             <div className="form-group-row">
               <div className="form-group">
