@@ -4,7 +4,6 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 function Layout({ pages, currentPageIndex, setCurrentPageIndex }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const isThrottled = useRef(false);
-  const touchStartY = useRef(null);
 
   useEffect(() => {
     document.body.classList.toggle('dark-mode', isDarkMode);
@@ -43,22 +42,41 @@ function Layout({ pages, currentPageIndex, setCurrentPageIndex }) {
     handleDirection(e.deltaY > 0 ? 'down' : 'up');
   };
 
+  const touchStartY = useRef(null);
+  const touchStartX = useRef(null);
+
   const handleTouchStart = (e) => {
     touchStartY.current = e.touches[0].clientY;
+    touchStartX.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = (e) => {
-    if (touchStartY.current == null) return;
+    if (touchStartY.current == null || touchStartX.current == null) return;
     const endY = e.changedTouches[0].clientY;
+    const endX = e.changedTouches[0].clientX;
     const deltaY = endY - touchStartY.current;
+    const deltaX = endX - touchStartX.current;
 
-    if (Math.abs(deltaY) < 50) {
+    const isInsideScrollable = e.target.closest(
+      '.skills-main-bento, .projects-list-column, .projects-viewport-column, .contact-layout-container'
+    );
+
+    // If gesture is inside scrollable container and primarily vertical, let it scroll naturally
+    if (isInsideScrollable && Math.abs(deltaY) > Math.abs(deltaX)) {
       touchStartY.current = null;
+      touchStartX.current = null;
       return;
     }
 
-    handleDirection(deltaY < 0 ? 'down' : 'up');
+    // Horizontal swipe takes precedence for horizontal page slide
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      handleDirection(deltaX < 0 ? 'down' : 'up');
+    } else if (!isInsideScrollable && Math.abs(deltaY) > 50) {
+      handleDirection(deltaY < 0 ? 'down' : 'up');
+    }
+
     touchStartY.current = null;
+    touchStartX.current = null;
   };
 
   return (

@@ -34,10 +34,6 @@
       "tech_stack": ["React Native", "Node.js", "Express", "MongoDB", "Socket.io"]
     },
     {
-      "name": "Debet AI",
-      "tech_stack": ["LangGraph", "LangChain", "Node.js"]
-    },
-    {
       "name": "Stream2Pod",
       "tech_stack": ["Python", "FastAPI"]
     }

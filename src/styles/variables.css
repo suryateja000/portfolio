@@ -7,8 +7,9 @@
   --border-color: rgb(0, 0, 0);
   --text-color: #1d1d1f;
   --secondary-text-color: #6e6e73;
-  --primary-color: #8b45ff;
-  --spotlight-color: rgba(0, 113, 227, 0.1);
+  --primary-color: #ff9900;
+  --primary-rgb: 255, 153, 0;
+  --spotlight-color: rgba(255, 153, 0, 0.12);
   --transition-speed: 0.4s;
   --page-container-height: calc(100vh - 10rem);
   --page-container-mobile-height: 500px;
@@ -20,8 +21,9 @@ body.dark-mode {
   --border-color: rgb(255, 255, 255);
   --text-color: #e5e5e5;
   --secondary-text-color: #999999;
-  --primary-color: #8b45ff;
-  --spotlight-color: rgba(0, 153, 255, 0.08);
+  --primary-color: #ff9900;
+  --primary-rgb: 255, 153, 0;
+  --spotlight-color: rgba(255, 153, 0, 0.15);
 }
 
 * {

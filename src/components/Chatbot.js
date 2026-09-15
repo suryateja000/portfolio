@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FiX, FiSend, FiMaximize2, FiMinimize2} from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? 'https://portfolio-t16g.onrender.com' : 'http://localhost:8000');
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 const Chatbot = ({ isChatOpen, toggleChat }) => {
   // --- STATE MANAGEMENT ---

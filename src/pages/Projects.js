@@ -3,7 +3,7 @@ import { FiGithub, FiEye } from 'react-icons/fi';
 import { FaReact, FaNodeJs, FaPython, FaMicrosoft, FaAws } from 'react-icons/fa';
 import { SiAdobeacrobatreader, SiOpenai, SiGraphql, SiPython, SiMongodb, SiExpress, SiSupabase,SiTailwindcss,SiJsonwebtokens, SiPostgresql, SiTensorflow, SiKeras, SiJupyter, SiStreamlit, SiSocketdotio, SiLangchain, SiFastapi, SiGoogle  } from 'react-icons/si';
 
-import bot_visual from '../images/bot.png';
+import agent_did_visual from '../images/Agent_DiD.png';
 import stu_visual from '../images/stu.png';
 import eco_visual from '../images/eco.png';
 import sen_visual from '../images/sen.png';
@@ -21,7 +21,7 @@ const portfolioData = {
     {
       title: 'Agent D-I-D',
       description: 'An event-driven AI learning architecture featuring dual personas (Jarvis and Ultron) to simulate interactive learning, integrated with mem0 for persistent memory and Rough.js for dynamic visual feedback.',
-      visual: bot_visual,
+      visual: agent_did_visual,
       liveUrl: '#',
       githubUrl: 'https://github.com/Karthik-25-code/AGENT-D-I-D',
       tags: ['AI/ML'],
@@ -30,19 +30,6 @@ const portfolioData = {
         { name: 'FastAPI', icon: <SiFastapi /> },
         { name: 'LangGraph', icon: <SiGraphql /> },
         { name: 'AWS', icon: <FaAws /> }
-      ],
-    },
-    {
-      title: 'Debet AI',
-      description: 'A multi-agent debate system engineered for legal simulations, utilizing robust AI orchestration workflows to model arguments.',
-      visual: bot_visual,
-      liveUrl: '#',
-      githubUrl: '#',
-      tags: ['AI/ML'],
-      tech_stack: [
-        { name: 'LangGraph', icon: <SiGraphql /> },
-        { name: 'LangChain', icon: <SiLangchain /> },
-        { name: 'Node.js', icon: <FaNodeJs /> }
       ],
     },
     {

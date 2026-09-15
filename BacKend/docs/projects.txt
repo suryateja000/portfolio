@@ -15,18 +15,6 @@
       "githubUrl": "https://github.com/Karthik-25-code/AGENT-D-I-D"
     },
     {
-      "name": "Debet AI",
-      "description": "A multi-agent debate system engineered for legal simulations, utilizing robust AI orchestration workflows to model arguments.",
-      "technologies": ["LangGraph", "LangChain", "Node.js"],
-      "key_features": [
-        "Multi-agent debate orchestration",
-        "Legal scenario simulations",
-        "Complex AI workflows"
-      ],
-      "liveUrl": "#",
-      "githubUrl": "#"
-    },
-    {
       "name": "Stream2Pod",
       "description": "An interactive platform that transforms YouTube videos into engaging podcast experiences with real-time AI-powered Q&A capabilities.",
       "technologies": ["React", "FastAPI", "Google Gemini AI", "Microsoft Edge TTS"],

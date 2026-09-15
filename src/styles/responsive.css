@@ -86,44 +86,76 @@
 
   /* --- SKILLS PAGE --- */
   .skills-main-bento {
-    overflow-y: auto;
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); 
-    gap: 0.75rem;
-    align-content: start;
+    overflow-y: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.9rem !important;
+    padding: 1.15rem !important;
+    padding-bottom: 2rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-y: contain !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(255, 153, 0, 0.35) transparent !important;
   }
 
-  .panel-title { display: none !important; }
+  .skills-main-bento::-webkit-scrollbar {
+    width: 3px;
+  }
 
-  .skill-panel, .panel-grid { display: contents; }
-
-  .skill-cell {
-    flex-direction: column;
-    padding: 0;
-    height: auto;
-    aspect-ratio: 1;
-    justify-content: flex-start;
-    align-items: center;
-    min-width: auto;
+  .skills-main-bento::-webkit-scrollbar-track {
     background: transparent;
-    border: none;
   }
 
-  .skill-cell:hover { background: transparent; transform: none; }
+  .skills-main-bento::-webkit-scrollbar-thumb {
+    background: rgba(255, 153, 0, 0.35);
+    border-radius: 3px;
+  }
 
-  .skill-name {
-    font-size: 0.65rem;
-    margin-top: 6px;
-    text-align: center;
-    line-height: 1.1;
-    color: var(--secondary-text-color);
+  .skill-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 1rem 0.85rem !important;
+    border-radius: 16px !important;
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .panel-title {
+    display: block !important;
+    font-size: 0.95rem !important;
+    margin-bottom: 0.85rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .panel-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.6rem 0.3rem !important;
+  }
+
+  .skill-cell,
+  .skill-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.35rem 0.2rem !important;
+    background: transparent !important;
+    border: none !important;
   }
 
   .skill-icon {
-    font-size: 1.8rem;
-    width: auto;
-    margin-bottom: 0;
+    font-size: 1.45rem !important;
+    color: var(--primary-color) !important;
+  }
+
+  .skill-name {
+    font-size: 0.72rem !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    margin-top: 3px !important;
+    color: var(--text-color) !important;
   }
 
   /* --- PROJECTS PAGE  --- */

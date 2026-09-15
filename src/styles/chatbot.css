@@ -133,7 +133,7 @@
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-  background: rgba(139, 69, 255, 0.4); /* Primary color with transparency */
+  background: rgba(255, 153, 0, 0.4); /* Primary orange color with transparency */
   border-radius: 4px;
 }
 

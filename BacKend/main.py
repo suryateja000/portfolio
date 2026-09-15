@@ -45,9 +45,9 @@ app = FastAPI(
 # CORS Configuration - Restrict in production
 origins = [
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
     "https://suryateja000.github.io",
     "https://portfolio-t16g.onrender.com", 
-    # Add other frontend deployment URLs here
 ]
 
 app.add_middleware(
