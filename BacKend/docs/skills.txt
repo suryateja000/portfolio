@@ -19,6 +19,7 @@
     "frontend_technologies": [
       "React",
       "React Native",
+      "Expo",
       "Next.js",
       "Tailwind CSS",
       "Streamlit",
@@ -43,6 +44,7 @@
       "GitHub Actions",
       "Docker",
       "AWS",
+      "Expo",
       "Socket.io",
       "VS Code",
       "Figma",

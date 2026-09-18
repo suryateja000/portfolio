@@ -10,9 +10,15 @@
   },
   "experience": [
     {
+      "role": "Software Development Intern",
+      "company": "Lets Game Now",
+      "duration": "Sep 2026 - Present",
+      "description": "Working on a React Native Expo app named GameVault."
+    },
+    {
       "role": "SDE Intern",
       "company": "Ayursh",
-      "duration": "Mar 2026 - Present"
+      "duration": "Mar 2026 - May 2026"
     },
     {
       "role": "Backend Developer Intern",
@@ -21,6 +27,11 @@
     }
   ],
   "projects": [
+    {
+      "name": "GameVault",
+      "tech_stack": ["React Native", "Expo", "JavaScript"],
+      "description": "React Expo mobile app developed during internship at Lets Game Now."
+    },
     {
       "name": "Agent D-I-D",
       "tech_stack": ["Python", "FastAPI", "LangGraph", "mem0", "Rough.js"]

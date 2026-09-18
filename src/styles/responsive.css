@@ -1,6 +1,13 @@
 @media (max-width: 768px) {
-  
-  html, body {
+
+  :root {
+    --cut-sm: 8px;
+    --cut-md: 14px;
+    --cut-lg: 18px;
+  }
+
+  html,
+  body {
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -9,9 +16,11 @@
     padding: 0;
   }
 
-  .fullpage-container, .pages-container {
+  .fullpage-container,
+  .pages-container {
     height: 100dvh;
     width: 100vw;
+    clip-path: none !important;
   }
 
   .pages-container {
@@ -33,92 +42,276 @@
     inset: 0;
     height: 100dvh;
     width: 100vw;
-    padding: 0;
+    padding: 0 !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 100px; 
+    padding-top: 72px !important;
   }
 
+  .page-container {
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: auto !important;
+  }
+
+  /* All 4 page boxes: strictly identical in height and width with industrial chamfer cuts and crisp 1px borders */
   .hero-box,
   .skills-main-bento,
   .projects-interactive-layout,
   .contact-layout-container {
-    height: calc(100dvh - 140px) !important;
-    width: calc(100vw - 30px) !important;
+    height: calc(100dvh - 94px) !important;
+    min-height: unset !important;
+    max-height: calc(100dvh - 94px) !important;
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
     margin: 0 auto !important;
-    
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
-    backdrop-filter: blur(14px);
-    padding: 1.25rem;
-    
+    background-color: var(--border-color) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
-    overflow: hidden;
-    position: relative;
+    overflow: hidden !important;
+    position: relative !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12) !important;
+    box-sizing: border-box !important;
   }
 
-  /* --- HOME PAGE --- */
+  /* Dual-layer 1px outline for mobile cards */
+  .hero-box::before,
+  .skills-main-bento::before,
+  .projects-interactive-layout::before,
+  .contact-layout-container::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: var(--border-width) !important;
+    display: block !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+  }
+
+  body:not(.dark-mode) .hero-box::before,
+  body:not(.dark-mode) .skills-main-bento::before,
+  body:not(.dark-mode) .projects-interactive-layout::before,
+  body:not(.dark-mode) .contact-layout-container::before {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+  }
+
+  body.dark-mode .hero-box::before,
+  body.dark-mode .skills-main-bento::before,
+  body.dark-mode .projects-interactive-layout::before,
+  body.dark-mode .contact-layout-container::before {
+    background-color: rgba(26, 26, 26, 0.98) !important;
+  }
+
+  .hero-box>*,
+  .skills-main-bento>*,
+  .projects-interactive-layout>*,
+  .contact-layout-container>* {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* --- 1. HERO BOX CHAMFER CUT (Bottom-Right Cut) --- */
   .hero-box {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    clip-path: polygon(0 0,
+        100% 0,
+        100% calc(100% - var(--cut-md)),
+        calc(100% - var(--cut-md)) 100%,
+        0 100%) !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 1.5rem !important;
+  }
+
+  .hero-box::before {
+    clip-path: polygon(0 0,
+        100% 0,
+        100% calc(100% - (var(--cut-md) - 1px)),
+        calc(100% - (var(--cut-md) - 1px)) 100%,
+        0 100%) !important;
   }
 
   .hero-main-text h1 {
-    font-size: 1.8rem;
+    font-size: 1.95rem;
     margin-bottom: 0.5rem;
   }
 
-  .arrow, .chatbot-cta, .subtitle { display: none; }
-
-  .resume-download-cta {
-    position: static;
-    margin-top: 1.5rem;
-    width: 100%;
-    justify-content: center;
-    padding: 0.8rem;
+  .subtitle,
+  .ai-assistant-guide {
+    display: none !important;
   }
 
-  /* --- SKILLS PAGE --- */
+  /* View Resume Button with reduced width and increased height on mobile */
+  .resume-download-cta {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin-top: 1.75rem !important;
+    width: 148px !important;
+    min-width: 148px !important;
+    max-width: 148px !important;
+    height: 72px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
+    padding: 0 1rem !important;
+    text-align: center !important;
+    background-color: var(--border-color) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    clip-path: polygon(0 0,
+        calc(100% - var(--cut-sm)) 0,
+        100% var(--cut-sm),
+        100% 100%,
+        0 100%) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .resume-download-cta::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: var(--border-width) !important;
+    background-color: var(--surface-opaque) !important;
+    clip-path: polygon(0 0,
+        calc(100% - (var(--cut-sm) - var(--border-width))) 0,
+        100% calc(var(--cut-sm) - var(--border-width)),
+        100% 100%,
+        0 100%) !important;
+    display: block !important;
+    z-index: 0 !important;
+    transition: background-color var(--transition-speed) ease;
+  }
+
+  .resume-download-cta span {
+    position: relative !important;
+    z-index: 1 !important;
+    color: var(--text-color) !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  /* --- 2. SKILLS PAGE CHAMFER CUT (Top-Right Cut) --- */
   .skills-main-bento {
-    overflow-y: auto !important;
+    clip-path: polygon(0 0,
+        calc(100% - var(--cut-md)) 0,
+        100% var(--cut-md),
+        100% 100%,
+        0 100%) !important;
+    display: block !important;
+  }
+
+  .skills-main-bento::before {
+    clip-path: polygon(0 0,
+        calc(100% - (var(--cut-md) - 1px)) 0,
+        100% calc(var(--cut-md) - 1px),
+        100% 100%,
+        0 100%) !important;
+  }
+
+  /* Fix: protect outer border line from inner panels cutting it on mobile */
+  .skills-main-bento {
+    padding: 14px 10px 10px 10px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .skills-scroll-container {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.9rem !important;
-    padding: 1.15rem !important;
-    padding-bottom: 2rem !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow-y: auto !important;
+    padding: 0.25rem 0.25rem 0.5rem 0.25rem !important;
     -webkit-overflow-scrolling: touch !important;
     overscroll-behavior-y: contain !important;
     scrollbar-width: thin !important;
-    scrollbar-color: rgba(255, 153, 0, 0.35) transparent !important;
+    scrollbar-color: rgba(55, 151, 119, 0.35) transparent !important;
+    box-sizing: border-box !important;
   }
 
-  .skills-main-bento::-webkit-scrollbar {
+  .skills-scroll-container::-webkit-scrollbar {
     width: 3px;
   }
 
-  .skills-main-bento::-webkit-scrollbar-track {
+  .skills-scroll-container::-webkit-scrollbar-track {
     background: transparent;
   }
 
-  .skills-main-bento::-webkit-scrollbar-thumb {
-    background: rgba(255, 153, 0, 0.35);
-    border-radius: 3px;
+  .skills-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(55, 151, 119, 0.35);
+    border-radius: 0;
   }
 
+  /* Skill Panels with Chamfer Cuts on Mobile */
   .skill-panel {
     display: flex !important;
     flex-direction: column !important;
     padding: 1rem 0.85rem !important;
-    border-radius: 16px !important;
-    background: transparent !important;
-    border: 1px solid var(--border-color) !important;
+    border-radius: 0 !important;
+    background-color: var(--border-color) !important;
+    border: none !important;
     flex-shrink: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .skill-panel::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: var(--border-width) !important;
+    background-color: var(--surface-opaque) !important;
+    display: block !important;
+    z-index: 0 !important;
+  }
+
+  .skill-panel>* {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Panel 1: bottom-left cut */
+  .skill-panel:nth-child(1) {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, var(--cut-sm) 100%, 0 calc(100% - var(--cut-sm))) !important;
+  }
+
+  .skill-panel:nth-child(1)::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, calc(var(--cut-sm) - 1px) 100%, 0 calc(100% - (var(--cut-sm) - 1px))) !important;
+  }
+
+  /* Panel 2: top-right cut */
+  .skill-panel:nth-child(2) {
+    clip-path: polygon(0 0, calc(100% - var(--cut-sm)) 0, 100% var(--cut-sm), 100% 100%, 0 100%) !important;
+  }
+
+  .skill-panel:nth-child(2)::before {
+    clip-path: polygon(0 0, calc(100% - (var(--cut-sm) - 1px)) 0, 100% calc(var(--cut-sm) - 1px), 100% 100%, 0 100%) !important;
+  }
+
+  /* Panel 3: top-left cut */
+  .skill-panel:nth-child(3) {
+    clip-path: polygon(var(--cut-sm) 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut-sm)) !important;
+  }
+
+  .skill-panel:nth-child(3)::before {
+    clip-path: polygon(calc(var(--cut-sm) - 1px) 0, 100% 0, 100% 100%, 0 100%, 0 calc(var(--cut-sm) - 1px)) !important;
+  }
+
+  /* Panel 4: bottom-right cut */
+  .skill-panel:nth-child(4) {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut-sm)), calc(100% - var(--cut-sm)) 100%, 0 100%) !important;
+  }
+
+  .skill-panel:nth-child(4)::before {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - (var(--cut-sm) - 1px)), calc(100% - (var(--cut-sm) - 1px)) 100%, 0 100%) !important;
   }
 
   .panel-title {
@@ -134,8 +327,7 @@
     gap: 0.6rem 0.3rem !important;
   }
 
-  .skill-cell,
-  .skill-card {
+  .skill-cell {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -158,31 +350,56 @@
     color: var(--text-color) !important;
   }
 
-  /* --- PROJECTS PAGE  --- */
+  /* --- 3. PROJECTS PAGE CHAMFER CUT (Bottom-Left and Top-Right Cuts) --- */
   .projects-interactive-layout {
-    padding: 0 !important; 
-    gap: 0; 
+    clip-path: polygon(0 0,
+        calc(100% - var(--cut-md)) 0,
+        100% var(--cut-md),
+        100% 100%,
+        var(--cut-md) 100%,
+        0 calc(100% - var(--cut-md))) !important;
+    padding: 0 !important;
+    gap: 0;
   }
 
-  .projects-header, .filter-tabs { display: none !important; }
+  .projects-interactive-layout::before {
+    clip-path: polygon(0 0,
+        calc(100% - (var(--cut-md) - 1px)) 0,
+        100% calc(var(--cut-md) - 1px),
+        100% 100%,
+        calc(var(--cut-md) - 1px) 100%,
+        0 calc(100% - (var(--cut-md) - 1px))) !important;
+  }
+
+  .projects-header,
+  .filter-tabs {
+    display: none !important;
+  }
+
+  .projects-body-row {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    gap: 0 !important;
+  }
 
   .projects-list-column {
-    flex: 0 0 23%; 
+    flex: 0 0 22%;
     width: 100%;
-    background: transparent; 
+    background: transparent;
     border: none;
-    border-bottom: 1px solid var(--border-color); 
+    border-bottom: 1px solid var(--border-color);
     border-radius: 0;
     overflow-y: auto;
-    padding: 0 1.25rem; 
+    padding: 0 1.25rem;
     margin: 0;
   }
 
   .project-list-item {
-    padding: 0.2rem 0;
+    padding: 0.25rem 0;
     font-size: 0.95rem;
     color: var(--secondary-text-color);
-    border-bottom: 1px solid rgba(0,0,0,0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   }
 
   .project-list-title {
@@ -191,142 +408,576 @@
   }
 
   .projects-viewport-column {
-    flex: 1; 
+    flex: 1;
     width: 100%;
     background: transparent;
     border: none;
     border-radius: 0;
-    padding: 1.25rem;
+    padding: 1rem 1rem 5.5rem 1rem !important;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
   }
+
   .viewport-image-wrapper {
+    position: relative !important;
     width: 100%;
-    height: 140px !important; 
-    flex: 0 0 140px !important; 
-    border-radius: 12px;
+    height: 140px !important;
+    flex: 0 0 140px !important;
+    border-radius: 0;
     overflow: hidden;
-    margin-bottom: 1rem;
-    background: rgba(0,0,0,0.03);
+    margin-bottom: 0.75rem;
+    background: transparent !important;
+    border: none !important;
+    clip-path: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .viewport-image-wrapper::before {
+    display: none !important;
   }
 
   .viewport-image {
+    position: relative !important;
+    z-index: 1 !important;
     width: 100%;
     height: 100%;
-    object-fit: contain; 
+    object-fit: contain;
   }
 
   .viewport-description {
     font-size: 0.85rem;
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
+  /* Stacking tech icons and buttons in 2 clean horizontal rows */
   .viewport-footer {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 0.5rem;
+    margin-top: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+    padding-top: 0.75rem !important;
+    border-top: 1px solid var(--border-color) !important;
   }
 
   .viewport-tech {
-    gap: 0.8rem;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
   }
 
   .tech-icon-container {
-    font-size: 1.3rem;
+    font-size: 1.35rem !important;
+  }
+
+  .viewport-actions {
+    width: calc(100% - 60px) !important;
+    max-width: 220px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.75rem !important;
+    justify-content: flex-start !important;
+    margin-bottom: 1rem !important;
   }
 
   .action-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    flex: 1 !important;
+    height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 1rem !important;
+    font-size: 0.82rem !important;
+    border-radius: 0 !important;
   }
 
-  /* --- CONTACT PAGE --- */
+  .action-btn.primary {
+    clip-path: polygon(0 0,
+        calc(100% - var(--cut-sm)) 0,
+        100% var(--cut-sm),
+        100% 100%,
+        0 100%) !important;
+  }
+
+  .action-btn.secondary {
+    clip-path: polygon(0 0,
+        100% 0,
+        100% 100%,
+        var(--cut-sm) 100%,
+        0 calc(100% - var(--cut-sm))) !important;
+    background-color: var(--border-color) !important;
+    border: none !important;
+  }
+
+  .action-btn.secondary::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: var(--border-width) !important;
+    background-color: var(--surface-opaque) !important;
+    clip-path: polygon(0 0,
+        100% 0,
+        100% 100%,
+        calc(var(--cut-sm) - var(--border-width)) 100%,
+        0 calc(100% - (var(--cut-sm) - var(--border-width)))) !important;
+    display: block !important;
+    z-index: 0 !important;
+  }
+
+  .action-btn.secondary>* {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* --- 4. CONTACT PAGE CHAMFER CUT (Top-Left and Bottom-Right Cuts) --- */
   .contact-layout-container {
-    overflow-y: auto;
-    padding: 1.5rem;
+    clip-path: polygon(var(--cut-md) 0,
+        100% 0,
+        100% calc(100% - var(--cut-md)),
+        calc(100% - var(--cut-md)) 100%,
+        0 100%,
+        0 var(--cut-md)) !important;
+    padding: 0 !important;
   }
 
-  .contact-info-panel { 
-    display: none; 
+  .contact-layout-container::before {
+    clip-path: polygon(calc(var(--cut-md) - 1px) 0,
+        100% 0,
+        100% calc(100% - (var(--cut-md) - 1px)),
+        calc(100% - (var(--cut-md) - 1px)) 100%,
+        0 100%,
+        0 calc(var(--cut-md) - 1px)) !important;
+  }
+
+  .contact-info-panel {
+    display: none !important;
   }
 
   .contact-form-panel {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    height: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 1.25rem 1.15rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    box-sizing: border-box !important;
+    justify-content: flex-start !important;
   }
 
   .contact-form-panel::before {
-    content: "Let's Connect"; 
-    display: block;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
+    display: none !important;
   }
 
-  .contact-form-panel h2 { 
-    display: none;
-  }
-  
-  .contact-form-panel p { 
-    display: none; 
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem; 
-    height: 100%;
+  .contact-form-panel form {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    max-height: 100% !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
-  .form-group { 
-    margin: 0; 
+  /* Name and Email in separate rows on mobile */
+  .contact-form-panel .form-group-row {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-shrink: 0 !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .contact-form-panel .form-group {
+    margin: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-shrink: 0 !important;
+  }
+
+  .contact-form-panel .form-group label {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.78rem !important;
+    font-family: monospace !important;
+    font-weight: 700 !important;
+    color: var(--secondary-text-color) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .contact-form-panel input {
+    width: 100% !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    flex-shrink: 0 !important;
+    padding: 0.65rem 0.95rem !important;
+    font-size: 0.95rem !important;
+    background-color: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
   }
 
   .contact-form-panel textarea {
-    flex: 1;
-    min-height: 100px;
+    width: 100% !important;
+    height: 130px !important;
+    min-height: 110px !important;
+    max-height: 145px !important;
+    flex-shrink: 0 !important;
+    padding: 0.75rem 0.95rem !important;
+    font-size: 0.95rem !important;
+    background-color: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+    resize: none !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
   }
-  
-  .submit-btn {
-    width: 100%;
-    justify-content: center;
-    margin-top: auto;
+
+  .contact-form-panel input:focus,
+  .contact-form-panel textarea:focus {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 2px rgba(55, 151, 119, 0.25) !important;
   }
-  /* --- NAVBAR --- */
+
+  /* Sleek, Full-Width Anchored Send Message CTA matching Image 2 */
+  .contact-form-panel .submit-btn {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.65rem !important;
+    margin: 0.25rem 0 0 0 !important;
+    align-self: stretch !important;
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 0.92rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 16px rgba(55, 151, 119, 0.4) !important;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%) !important;
+    transition: all 0.25s ease !important;
+    border-radius: 0 !important;
+  }
+
+  .contact-form-panel .submit-btn:hover {
+    background-color: #2b7a60 !important;
+  }
+
+  .contact-form-panel .submit-btn:active {
+    transform: scale(0.985) !important;
+    filter: brightness(0.92) !important;
+  }
+
+  /* --- 5. MOBILE HEADER: 2 SEPARATE BOXES (Matching Image 2) --- */
+  .site-header {
+    position: fixed !important;
+    top: 10px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: calc(100vw - 24px) !important;
+    height: 52px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    align-items: center !important;
+    z-index: 2000 !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Box 1: Nav Links Card (holds all 4 page options) - Chamfer ONLY on bottom-left, flat vertical right edge */
   .navbar {
-    top: 15px;
-    width: calc(100% - 30px);
-    padding: 0.6rem 1rem;
-    justify-content: space-between;
-    z-index: 2000;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    flex: 1 !important;
+    height: 52px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    padding: 0 0.5rem !important;
+    background-color: var(--border-color) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    /* Chamfer cut on bottom-left ONLY; flat vertical right edge facing Box 2 */
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      10px 100%,
+      0 calc(100% - 10px)
+    ) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
   }
-  .nav-links { gap: 0.5rem; }
-  .nav-links a { font-size: 0.75rem; padding: 0.2rem 0.4rem; }
 
-  /* --- CHATBOT --- */
-  .chat-toggle-button {
-    bottom: 30px;
-    right: 30px;
-    width: 10px;
-    height: 10px;
-    z-index: 2001;
+  .navbar::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: var(--border-width) !important;
+    background-color: var(--surface-opaque) !important;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      calc(10px - var(--border-width)) 100%,
+      0 calc(100% - (10px - var(--border-width)))
+    ) !important;
+    display: block !important;
+    z-index: 0 !important;
   }
 
-  .chat-window, .chat-window.maximized {
-    position: fixed;
-    width: 90vw !important;
-    height: 75vh !important;
-    bottom: 80px !important;
-    left: 5vw !important;
-    right: 5vw !important;
+  body:not(.dark-mode) .navbar::before,
+  body:not(.dark-mode) .header-theme-box::before {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+  }
+
+  body.dark-mode .navbar::before,
+  body.dark-mode .header-theme-box::before {
+    background-color: rgba(26, 26, 26, 0.98) !important;
+  }
+
+  .navbar > * {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  .nav-links {
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    height: 100% !important;
     margin: 0 !important;
-    border-radius: 24px !important;
-    z-index: 2002;
+    padding: 0 !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    list-style: none !important;
+  }
+
+  .nav-links li {
+    width: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .nav-links a {
+    font-size: 1.25rem !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Clean active underline indicator for mobile navbar */
+  .nav-links a.active {
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .nav-links a.active::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 3px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 14px !important;
+    height: 2px !important;
+    background-color: var(--primary-color) !important;
+    border-radius: 2px !important;
+  }
+
+  /* Box 2: Dedicated Theme Toggle Card (holds bright/dark mode) - Chamfer ONLY on top-right, flat vertical left edge */
+  .header-theme-box {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 52px !important;
+    height: 52px !important;
+    flex: 0 0 52px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: var(--border-color) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    /* Chamfer cut on top-right ONLY; flat vertical left edge facing Box 1 */
+    clip-path: polygon(
+      0 0,
+      calc(100% - 10px) 0,
+      100% 10px,
+      100% 100%,
+      0 100%
+    ) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-theme-box::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: var(--border-width) !important;
+    background-color: var(--surface-opaque) !important;
+    clip-path: polygon(
+      0 0,
+      calc(100% - (10px - var(--border-width))) 0,
+      100% calc(10px - var(--border-width)),
+      100% 100%,
+      0 100%
+    ) !important;
+    display: block !important;
+    z-index: 0 !important;
+  }
+
+  .header-theme-box .theme-toggle-btn {
+    position: relative !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: var(--primary-color) !important;
+    cursor: pointer !important;
+  }
+
+  .header-theme-box .theme-toggle-icon {
+    font-size: 1.45rem !important;
+    display: block !important;
+    margin: auto !important;
+  }
+
+  /* --- 6. CHATBOT OVERHAUL ON MOBILE (Pure Borderless Floating Icon) --- */
+  .chat-toggle-button {
+    bottom: 2.25rem !important;
+    right: 1.65rem !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 0 !important;
+    z-index: 2001 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    clip-path: none !important;
+    color: var(--primary-color) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .chat-toggle-button::before {
+    display: none !important;
+  }
+
+  .bot-icon-svg {
+    font-size: 2.25rem !important;
+  }
+
+  /* Fully opaque, clean modal card for mobile chat */
+  .chat-window,
+  .chat-window.maximized {
+    position: fixed !important;
+    top: 72px !important;
+    bottom: 16px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    height: calc(100dvh - 90px) !important;
+    max-height: calc(100dvh - 90px) !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    z-index: 3000 !important;
+    background-color: var(--surface-color) !important;
+    border: var(--border-width) solid var(--border-color) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    clip-path: none !important;
+  }
+
+  .chat-window::before,
+  .chat-window.maximized::before {
+    display: none !important;
+  }
+
+  .chat-header {
+    background-color: var(--surface-opaque) !important;
+    border-bottom: var(--border-width) solid var(--border-color) !important;
+    padding: 12px 14px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .chat-title h3 {
+    font-size: 14px !important;
+  }
+
+  .chat-messages {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    background-color: var(--bg-color) !important;
+    padding: 12px !important;
+    gap: 10px !important;
+  }
+
+  .chat-input-container {
+    background-color: var(--surface-opaque) !important;
+    border-top: var(--border-width) solid var(--border-color) !important;
+    padding: 10px 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .chat-input-field {
+    height: 40px !important;
+    padding: 0 12px !important;
+    background-color: var(--surface-color) !important;
+    border: var(--border-width) solid var(--border-color) !important;
+    font-size: 13px !important;
+    color: var(--text-color) !important;
+  }
+
+  .chat-send-btn {
+    width: 40px !important;
+    height: 40px !important;
+    flex-shrink: 0 !important;
   }
 }

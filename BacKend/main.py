@@ -42,12 +42,9 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS Configuration - Restrict in production
+# CORS Configuration
 origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://suryateja000.github.io",
-    "https://portfolio-t16g.onrender.com", 
+    "https://suryateja0.netlify.app"
 ]
 
 app.add_middleware(

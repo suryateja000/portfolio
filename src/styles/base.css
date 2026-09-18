@@ -1,19 +1,25 @@
+/* ===================================
+   base.css
+   Base Component Styles
+   =================================== */
 
 .bento-box {
   background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
-  border-radius: 24px;
-  padding: 2rem;
-  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 0;
+  padding: 2.5rem;
+  transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
   display: flex;
   flex-direction: column;
 }
 
 .bento-box:hover {
-  transform: translateY(-5px);
+  border-color: var(--primary-color);
 }
 
 .page-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1320px;
+  height: var(--page-container-height);
   margin: auto;
 }

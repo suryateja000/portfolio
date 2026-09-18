@@ -74,9 +74,11 @@ const SkillPanel = ({ group }) => (
 function Skills() {
   return (
     <div className="skills-main-bento">
-      {skillGroups.map(group => (
-        <SkillPanel key={group.title} group={group} />
-      ))}
+      <div className="skills-scroll-container">
+        {skillGroups.map(group => (
+          <SkillPanel key={group.title} group={group} />
+        ))}
+      </div>
     </div>
   );
 }

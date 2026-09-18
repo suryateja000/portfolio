@@ -2,7 +2,30 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FiX, FiSend, FiMaximize2, FiMinimize2} from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+const isLocalhost = typeof window !== 'undefined' && Boolean(
+  window.location.hostname === 'localhost' ||
+  window.location.hostname === '[::1]' ||
+  window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+);
+
+const DEFAULT_PROD_API_URL = 'https://portfolio-t16g.onrender.com';
+
+const getApiEndpoints = () => {
+  const configured = process.env.REACT_APP_API_URL;
+  if (isLocalhost) {
+    const list = [];
+    if (configured) list.push(configured);
+    if (!list.includes('http://127.0.0.1:8000')) list.push('http://127.0.0.1:8000');
+    if (!list.includes('http://localhost:8000')) list.push('http://localhost:8000');
+    return list;
+  }
+  // Production (e.g. Netlify): NEVER probe localhost or 127.0.0.1
+  // This completely eliminates Chrome's "Access other apps and services on this device" prompt!
+  if (configured && !configured.includes('localhost') && !configured.includes('127.0.0.1')) {
+    return [configured];
+  }
+  return [DEFAULT_PROD_API_URL];
+};
 
 const Chatbot = ({ isChatOpen, toggleChat }) => {
   // --- STATE MANAGEMENT ---
@@ -21,6 +44,9 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
   const chatWindowRef = useRef(null);
 
   // --- EFFECTS ---
+  const activeUrlRef = useRef(
+    process.env.REACT_APP_API_URL || (isLocalhost ? 'http://localhost:8000' : DEFAULT_PROD_API_URL)
+  );
 
   // Effect for setting the initial theme and updating the data-theme attribute
   useEffect(() => {
@@ -54,45 +80,69 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
     };
   }, [isChatOpen, toggleChat]);
 
-  // Effect for the initial backend warm-up (trigger on load)
+  // Only warm up backend when chat is actually opened
   useEffect(() => {
-    if (!hasWarmedUp.current) {
-      warmUpBackend();
+    if (isChatOpen && !isConnected && !hasWarmedUp.current) {
       hasWarmedUp.current = true;
+      warmUpBackend();
     }
-  }, []);
+  }, [isChatOpen, isConnected]);
 
   // --- API & EVENT HANDLERS ---
 
-  // Theme is toggled by Layout.js, Chatbot just follows data-theme attribute
-
-  // Initial health check to the backend
+  // Health check: safe for both local dev and production
   const warmUpBackend = async () => {
     setIsInitializing(true);
-    setIsConnected(false);
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/health`, {
-        method: 'GET', headers: { 'Content-Type': 'application/json' },
-      });
-      if (response.ok) {
-        setIsConnected(true);
-        setTimeout(() => {
-          setMessages([{
-            text: "Hi! I'm Surya's Assistant. Ask me anything about his skills, projects, or experience.",
-            sender: "bot",
-            suggestions: [
-              "Tell me about Surya's experience",
-              "What are Surya's key skills?",
-              "Show me Surya's best projects"
-            ]
-          }]);
-          setIsInitializing(false);
-        }, 500);
-      } else {
-        throw new Error('Health check failed');
+    const endpoints = getApiEndpoints();
+
+    if (endpoints.length === 0) {
+      // In production with no cloud backend URL configured:
+      // Provide clean default starter without attempting any forbidden local network requests
+      setIsConnected(false);
+      setIsInitializing(false);
+      setMessages([{
+        text: "Hi! I'm Surya's Assistant. Feel free to explore Surya's skills, projects, or reach out directly via the Contact page!",
+        sender: "bot",
+        suggestions: [
+          "What are Surya's key skills?",
+          "Show me Surya's best projects"
+        ]
+      }]);
+      return;
+    }
+
+    let connected = false;
+
+    for (const url of endpoints) {
+      try {
+        const response = await fetch(`${url}/api/health`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+          activeUrlRef.current = url;
+          setIsConnected(true);
+          connected = true;
+          setTimeout(() => {
+            setMessages([{
+              text: "Hi! I'm Surya's Assistant. Ask me anything about his skills, projects, or experience.",
+              sender: "bot",
+              suggestions: [
+                "Tell me about Surya's experience",
+                "What are Surya's key skills?",
+                "Show me Surya's best projects"
+              ]
+            }]);
+            setIsInitializing(false);
+          }, 300);
+          break;
+        }
+      } catch (err) {
+        // Try next endpoint
       }
-    } catch (error) {
-      console.error('Backend warmup failed:', error);
+    }
+
+    if (!connected) {
       setIsConnected(false);
       setIsInitializing(false);
       setMessages([{ text: "Sorry, I can't connect to the server right now. Please make sure the backend is running.", sender: "bot" }]);
@@ -103,7 +153,7 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
   const getBotResponse = async (question) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/chat`, {
+      const response = await fetch(`${activeUrlRef.current}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: question, session_id: sessionId }),

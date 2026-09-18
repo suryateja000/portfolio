@@ -3,6 +3,18 @@
   "title": "Full Stack + AI Developer",
   "projects": [
     {
+      "name": "GameVault",
+      "description": "A cross-platform React Native Expo mobile application developed at Lets Game Now during the Software Development Internship.",
+      "technologies": ["React Native", "Expo", "JavaScript", "Mobile App Development"],
+      "key_features": [
+        "Cross-platform mobile app built with React Native and Expo",
+        "Interactive gaming features and performance optimization",
+        "Developed during Software Development Internship at Lets Game Now"
+      ],
+      "liveUrl": "#",
+      "githubUrl": "#"
+    },
+    {
       "name": "Agent D-I-D",
       "description": "An event-driven AI learning architecture featuring dual personas (Jarvis and Ultron) to simulate interactive learning, integrated with mem0 for persistent memory and Rough.js for dynamic visual feedback.",
       "technologies": ["Python", "FastAPI", "LangGraph", "mem0", "Rough.js", "AWS"],

@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FiSun, FiMoon } from 'react-icons/fi';
+import React, { useRef } from 'react';
+import { FiHome, FiLayers, FiBriefcase, FiMail } from 'react-icons/fi';
+import ThemeToggle from './ThemeToggle';
 
-function Layout({ pages, currentPageIndex, setCurrentPageIndex }) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+const navIcons = {
+  'Home': <FiHome />,
+  'Skills': <FiLayers />,
+  'Projects': <FiBriefcase />,
+  'Contact': <FiMail />,
+};
+
+function Layout({ pages, currentPageIndex, setCurrentPageIndex, isDarkMode, toggleTheme }) {
   const isThrottled = useRef(false);
-
-  useEffect(() => {
-    document.body.classList.toggle('dark-mode', isDarkMode);
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
-  };
 
   const goToPage = (nextIndex) => {
     if (nextIndex === currentPageIndex) return;
@@ -81,32 +80,31 @@ function Layout({ pages, currentPageIndex, setCurrentPageIndex }) {
 
   return (
     <>
-      <nav className="navbar">
-        <ul className="nav-links">
-          {pages.map((page, index) => (
-            <li key={page.name}>
-              <a
-                href="/"
-                className={index === currentPageIndex ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault();
-                  goToPage(index);
-                }}
-              >
-                {page.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <header className="site-header">
+        <nav className="navbar" aria-label="Main Navigation">
+          <ul className="nav-links">
+            {pages.map((page, index) => (
+              <li key={page.name}>
+                <a
+                  href="/"
+                  className={index === currentPageIndex ? 'active' : ''}
+                  title={page.name}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goToPage(index);
+                  }}
+                >
+                  {navIcons[page.name] || page.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        <button
-          className="theme-toggle"
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-        >
-          {isDarkMode ? <FiSun /> : <FiMoon />}
-        </button>
-      </nav>
+        <div className="header-theme-box">
+          <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+        </div>
+      </header>
 
       <div className="portfolio-container">
         <div

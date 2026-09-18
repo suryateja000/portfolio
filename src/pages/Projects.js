@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiGithub, FiEye } from 'react-icons/fi';
 import { FaReact, FaNodeJs, FaPython, FaMicrosoft, FaAws } from 'react-icons/fa';
-import { SiAdobeacrobatreader, SiOpenai, SiGraphql, SiPython, SiMongodb, SiExpress, SiSupabase,SiTailwindcss,SiJsonwebtokens, SiPostgresql, SiTensorflow, SiKeras, SiJupyter, SiStreamlit, SiSocketdotio, SiLangchain, SiFastapi, SiGoogle  } from 'react-icons/si';
+import { SiAdobeacrobatreader, SiOpenai, SiGraphql, SiPython, SiMongodb, SiExpress, SiTailwindcss, SiJsonwebtokens, SiTensorflow, SiKeras, SiJupyter, SiStreamlit, SiSocketdotio, SiLangchain, SiFastapi, SiGoogle } from 'react-icons/si';
 
 import agent_did_visual from '../images/Agent_DiD.png';
 import stu_visual from '../images/stu.png';
@@ -9,7 +9,6 @@ import eco_visual from '../images/eco.png';
 import sen_visual from '../images/sen.png';
 import dig_visual from '../images/dig.png';
 import cn_visual from '../images/cn.png';
-import serv_visual from '../images/serv.png';
 import qb_visual from '../images/qb.png';
 import s2p_visual from '../images/S2p.png';
 import hab_visual from '../images/hab.png';
@@ -20,7 +19,7 @@ const portfolioData = {
   projects: [
     {
       title: 'Agent D-I-D',
-      description: 'An event-driven AI learning architecture featuring dual personas (Jarvis and Ultron) to simulate interactive learning, integrated with mem0 for persistent memory and Rough.js for dynamic visual feedback.',
+      description: 'Agent D-I-D is an AI learning platform featuring two specialized agents: one dedicated to instruction, and the other to targeted revision.',
       visual: agent_did_visual,
       liveUrl: '#',
       githubUrl: 'https://github.com/Karthik-25-code/AGENT-D-I-D',
@@ -33,23 +32,23 @@ const portfolioData = {
       ],
     },
     {
-    title: 'Stream2Pod',
-    description: 'An interactive platform that transforms YouTube videos into engaging podcast experiences with real-time AI-powered Q&A capabilities.',
-    visual: s2p_visual,
-    liveUrl: '#',
-    githubUrl: 'https://github.com/suryateja000/Stream2pod', 
-    tags: ['Web', 'AI/ML'],
-    tech_stack: [
+      title: 'Stream2Pod',
+      description: 'An interactive platform that transforms YouTube videos into engaging podcast experiences with real-time AI-powered Q&A capabilities.',
+      visual: s2p_visual,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/suryateja000/Stream2pod',
+      tags: ['Web', 'AI/ML'],
+      tech_stack: [
         { name: 'React', icon: <FaReact /> },
         { name: 'FastAPI', icon: <SiFastapi /> },
         { name: 'Google Gemini AI', icon: <SiGoogle /> },
-        { name: 'Microsoft Edge TTS', icon: <FaMicrosoft  /> }
-    ],
-  },
-  {
+        { name: 'Microsoft Edge TTS', icon: <FaMicrosoft /> }
+      ],
+    },
+    {
       title: 'Design Review AI Chatbot',
-      description: 'An AI-powered chatbot with RAG (Retrieval-Augmented Generation) that answers design queries using official UI/UX guidelines from Google, Apple, and Microsoft.',
-      visual: des_visual, 
+      description: 'DesignCritic AI is a RAG-powered chatbot that answers design queries using official Google, Apple, and Microsoft UI/UX guidelines.',
+      visual: des_visual,
       liveUrl: 'https://designcritic.streamlit.app/',
       githubUrl: 'https://github.com/suryateja000/DesignCritic',
       tags: ['AI/ML'],
@@ -60,7 +59,7 @@ const portfolioData = {
         { name: 'Document Processing', icon: <SiAdobeacrobatreader /> },
       ],
     },
-  {
+    {
       title: 'Habit Tracker Web App',
       description: 'A full-stack social habit tracking platform that helps users build consistent habits and stay accountable through a community of friends.',
       visual: hab_visual,
@@ -75,15 +74,15 @@ const portfolioData = {
         { name: 'MongoDB', icon: <SiMongodb /> },
         { name: 'JWT Auth', icon: <SiJsonwebtokens /> },
       ],
-  },
-  {
-    title: 'Student Progress System',
-    description: 'A MERN stack app to track student Codeforces activity, update progress daily at 2 AM, and email alerts to students inactive for 7+ days.',
+    },
+    {
+      title: 'Student Progress System',
+      description: 'A MERN stack app to track student Codeforces activity, update progress daily at 2 AM, and email alerts to students inactive for 7+ days.',
       visual: stu_visual,
       liveUrl: 'https://profilesofcodeforces.netlify.app/',
       githubUrl: 'https://github.com/suryateja000/Codeforces',
       tags: ['Web', 'MERN Stack'],
-      tech_stack: [ { name: 'React', icon: <FaReact /> }, { name: 'MongoDB', icon: <SiMongodb /> }, { name: 'Node.js', icon: <FaNodeJs /> }, { name: 'Express', icon: <SiExpress /> } ],
+      tech_stack: [{ name: 'React', icon: <FaReact /> }, { name: 'MongoDB', icon: <SiMongodb /> }, { name: 'Node.js', icon: <FaNodeJs /> }, { name: 'Express', icon: <SiExpress /> }],
     },
     {
       title: 'AI Answer Key Generator',
@@ -92,7 +91,7 @@ const portfolioData = {
       liveUrl: 'https://question-bank-to-answer-key.streamlit.app/',
       githubUrl: 'https://github.com/suryateja000/Qb_to_Ak',
       tags: ['AI/ML'],
-      tech_stack: [ { name: 'Python', icon: <FaPython /> }, { name: 'Streamlit', icon: <SiStreamlit /> }, { name: 'LangChain', icon: <SiLangchain /> } ],
+      tech_stack: [{ name: 'Python', icon: <FaPython /> }, { name: 'Streamlit', icon: <SiStreamlit /> }, { name: 'LangChain', icon: <SiLangchain /> }],
     },
     {
       title: 'EcoTrack - Recycling App',
@@ -101,50 +100,41 @@ const portfolioData = {
       liveUrl: '#',
       githubUrl: 'https://github.com/suryateja000/Eco-track-frontend-',
       tags: ['Mobile'],
-      tech_stack: [ { name: 'React Native', icon: <FaReact /> }, { name: 'Node.js', icon: <FaNodeJs /> }, { name: 'Socket.IO', icon: <SiSocketdotio /> }, { name: 'MongoDB', icon: <SiMongodb /> } ],
+      tech_stack: [{ name: 'React Native', icon: <FaReact /> }, { name: 'Node.js', icon: <FaNodeJs /> }, { name: 'Socket.IO', icon: <SiSocketdotio /> }, { name: 'MongoDB', icon: <SiMongodb /> }],
     },
     {
-        title: 'Sentiment Analyzer',
-        description: 'A real-time sentiment analysis tool that evaluates text to generate detailed polarity and subjectivity scores, along with intuitive visual feedback for instant emotional insights.',
-        visual: sen_visual,
-        liveUrl: 'https://monumental-axolotl-41dbde.netlify.app/',
-        githubUrl: 'https://github.com/suryateja000/Sentiment-analysis',
-        tags: ['Web', 'AI/ML'],
-        tech_stack: [ { name: 'React', icon: <FaReact /> }, { name: 'Python', icon: <FaPython /> }, { name: 'FastAPI', icon: <SiFastapi /> } ],
+      title: 'Sentiment Analyzer',
+      description: 'A real-time sentiment analysis tool that scores text polarity and subjectivity with instant visual feedback.',
+      visual: sen_visual,
+      liveUrl: 'https://monumental-axolotl-41dbde.netlify.app/',
+      githubUrl: 'https://github.com/suryateja000/Sentiment-analysis',
+      tags: ['Web', 'AI/ML'],
+      tech_stack: [{ name: 'React', icon: <FaReact /> }, { name: 'Python', icon: <FaPython /> }, { name: 'FastAPI', icon: <SiFastapi /> }],
     },
     {
-        title: 'Course Navigator',
-        description: 'A web platform guiding post-12th students to academic courses with personalized suggestions tailored to their skills and interests.',
-        visual: cn_visual,
-        liveUrl: 'https://suryateja000.github.io/Course-Navigator/',
-        githubUrl: 'https://github.com/suryateja000/Course-Navigator',
-        tags: ['Web'],
-        tech_stack: [ { name: 'React', icon: <FaReact /> }, { name: 'Node.js', icon: <FaNodeJs /> }, { name: 'Express', icon: <SiExpress /> }, { name: 'MongoDB', icon: <SiMongodb /> } ],
+      title: 'Course Navigator',
+      description: 'A web platform guiding post-12th students to academic courses with personalized suggestions tailored to their skills and interests.',
+      visual: cn_visual,
+      liveUrl: 'https://suryateja000.github.io/Course-Navigator/',
+      githubUrl: 'https://github.com/suryateja000/Course-Navigator',
+      tags: ['Web'],
+      tech_stack: [{ name: 'React', icon: <FaReact /> }, { name: 'Node.js', icon: <FaNodeJs /> }, { name: 'Express', icon: <SiExpress /> }, { name: 'MongoDB', icon: <SiMongodb /> }],
     },
     {
-        title: 'Service Marketplace',
-        description: 'A platform where services can be posted or searched by location, enabling easy contact—especially during urgent or critical situations.',
-        visual: serv_visual,
-        liveUrl: 'https://service-market.netlify.app',
-        githubUrl: '#',
-        tags: ['Web'],
-        tech_stack: [ { name: 'React', icon: <FaReact /> }, { name: 'Supabase', icon: <SiSupabase /> }, { name: 'PostgreSQL', icon: <SiPostgresql /> } ],
+      title: 'Handwritten Digit Recognition',
+      description: 'Recognizes handwritten digits instantly—even with messy input—through efficient, real-time digit analysis.',
+      visual: dig_visual,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/suryateja000/Digit-analyse',
+      tags: ['AI/ML', 'Desktop'],
+      tech_stack: [{ name: 'TensorFlow', icon: <SiTensorflow /> }, { name: 'Keras', icon: <SiKeras /> }, { name: 'Python', icon: <FaPython /> }, { name: 'Jupyter', icon: <SiJupyter /> }],
     },
-    {
-        title: 'Handwritten Digit Recognition',
-        description: 'Recognizes handwritten digits instantly—even with messy input—through efficient, real-time digit analysis.',
-        visual: dig_visual,
-        liveUrl: '#',
-        githubUrl: 'https://github.com/suryateja000/Digit-analyse',
-        tags: ['AI/ML', 'Desktop'],
-        tech_stack: [ { name: 'TensorFlow', icon: <SiTensorflow /> }, { name: 'Keras', icon: <SiKeras /> }, { name: 'Python', icon: <FaPython /> }, { name: 'Jupyter', icon: <SiJupyter /> } ],
-    },
-    
+
   ],
 };
 
 const filterCategories = [
-  { id: 'All', label: 'All Projects'}, { id: 'Web', label: 'Web Apps'}, { id: 'AI/ML', label: 'AI & ML'}, { id: 'Mobile', label: 'Mobile'},
+  { id: 'All', label: 'All Projects' }, { id: 'Web', label: 'Web Apps' }, { id: 'AI/ML', label: 'AI & ML' }, { id: 'Mobile', label: 'Mobile' },
 ];
 
 const MobileProjectCard = ({ project }) => (
@@ -162,8 +152,8 @@ const MobileProjectCard = ({ project }) => (
           ))}
         </div>
         <div className="mobile-card-actions">
-          {project.liveUrl && project.liveUrl !== '#' && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="action-btn primary"><FiEye/></a>}
-          {project.githubUrl && project.githubUrl !== '#' && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="action-btn secondary"><FiGithub/></a>}
+          {project.liveUrl && project.liveUrl !== '#' && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="action-btn primary"><FiEye /></a>}
+          {project.githubUrl && project.githubUrl !== '#' && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="action-btn secondary"><FiGithub /></a>}
         </div>
       </div>
     </div>
@@ -174,67 +164,69 @@ function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
 
-  const filteredProjects = portfolioData.projects.filter(project => 
+  const filteredProjects = portfolioData.projects.filter(project =>
     activeFilter === 'All' || project.tags.includes(activeFilter)
   );
 
   useEffect(() => {
     setActiveProjectIndex(0);
   }, [activeFilter]);
-  
+
   // Safe way to ensure we don't go out of bounds
   const safeIndex = Math.min(activeProjectIndex, Math.max(0, filteredProjects.length - 1));
   const activeProject = filteredProjects[safeIndex] || filteredProjects[0];
 
   return (
     <div className="page-container">
-      <div className="projects-header">
-        <div className="filter-section">
-          <div className="filter-tabs">
-            {filterCategories.map(category => (
-              <button key={category.id} className={`filter-tab ${activeFilter === category.id ? 'active' : ''}`} onClick={() => setActiveFilter(category.id)}>
-                <span className="filter-label">{category.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {filteredProjects.length > 0 ? (
         <div className="projects-layout-wrapper">
           <div className="projects-interactive-layout">
-            <div className="projects-list-column">
-              <div className="projects-list-container">
-                {filteredProjects.map((project, index) => (
-                  <div key={index} className={`project-list-item ${index === activeProjectIndex ? 'active' : ''}`} onMouseEnter={() => setActiveProjectIndex(index)}>
-                    <h3 className="project-list-title">{project.title}</h3>
-                  </div>
-                ))}
+            <div className="projects-header">
+              <div className="filter-section">
+                <div className="filter-tabs">
+                  {filterCategories.map(category => (
+                    <button key={category.id} className={`filter-tab ${activeFilter === category.id ? 'active' : ''}`} onClick={() => setActiveFilter(category.id)}>
+                      <span className="filter-label">{category.label}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-            
-            <div className="projects-viewport-column">
-              {activeProject && (
-                <div className="viewport-content" key={activeProject.title}>
-                  <div className="viewport-image-wrapper">
-                    <img src={activeProject.visual} alt={activeProject.title} className="viewport-image"/>
-                  </div>
-                  <div className="viewport-details">
-                    <p className="viewport-description">{activeProject.description}</p>
-                    <div className="viewport-footer">
-                      <div className="viewport-tech">
-                        {activeProject.tech_stack.map((tech, i) => (
-                          <div key={i} className="tech-icon-container" data-tooltip={tech.name}>{tech.icon}</div>
-                        ))}
-                      </div>
-                      <div className="viewport-actions">
-                        {activeProject.liveUrl && activeProject.liveUrl !== '#' && <a href={activeProject.liveUrl} target="_blank" rel="noopener noreferrer" className="action-btn primary"><FiEye/><span>Live</span></a>}
-                        {activeProject.githubUrl && activeProject.githubUrl !== '#' && <a href={activeProject.githubUrl} target="_blank" rel="noopener noreferrer" className="action-btn secondary"><FiGithub/><span>Code</span></a>}
+
+            <div className="projects-body-row">
+              <div className="projects-list-column">
+                <div className="projects-list-container">
+                  {filteredProjects.map((project, index) => (
+                    <div key={index} className={`project-list-item ${index === activeProjectIndex ? 'active' : ''}`} onMouseEnter={() => setActiveProjectIndex(index)}>
+                      <h3 className="project-list-title">{project.title}</h3>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="projects-viewport-column">
+                {activeProject && (
+                  <div className="viewport-content" key={activeProject.title}>
+                    <div className="viewport-image-wrapper">
+                      <img src={activeProject.visual} alt={activeProject.title} className="viewport-image" />
+                    </div>
+                    <div className="viewport-details">
+                      <p className="viewport-description">{activeProject.description}</p>
+                      <div className="viewport-footer">
+                        <div className="viewport-tech">
+                          {activeProject.tech_stack.map((tech, i) => (
+                            <div key={i} className="tech-icon-container" data-tooltip={tech.name}>{tech.icon}</div>
+                          ))}
+                        </div>
+                        <div className="viewport-actions">
+                          {activeProject.liveUrl && activeProject.liveUrl !== '#' && <a href={activeProject.liveUrl} target="_blank" rel="noopener noreferrer" className="action-btn primary"><FiEye /><span>Live</span></a>}
+                          {activeProject.githubUrl && activeProject.githubUrl !== '#' && <a href={activeProject.githubUrl} target="_blank" rel="noopener noreferrer" className="action-btn secondary"><FiGithub /><span>Code</span></a>}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
 
