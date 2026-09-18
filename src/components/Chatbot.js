@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FiX, FiSend, FiMaximize2, FiMinimize2} from 'react-icons/fi';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { FiX, FiSend, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
 
 const isLocalhost = typeof window !== 'undefined' && Boolean(
@@ -29,7 +29,17 @@ const getApiEndpoints = () => {
 
 const Chatbot = ({ isChatOpen, toggleChat }) => {
   // --- STATE MANAGEMENT ---
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      text: "Hi! I'm Surya's Assistant. Ask me anything about his skills, projects, or experience.",
+      sender: "bot",
+      suggestions: [
+        "Tell me about Surya's experience",
+        "What are Surya's key skills?",
+        "Show me Surya's best projects"
+      ]
+    }
+  ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
@@ -40,7 +50,6 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
 
   // --- REFS ---
   const messagesEndRef = useRef(null);
-  const hasWarmedUp = useRef(false);
   const chatWindowRef = useRef(null);
 
   // --- EFFECTS ---
@@ -80,38 +89,20 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
     };
   }, [isChatOpen, toggleChat]);
 
-  // Only warm up backend when chat is actually opened
-  useEffect(() => {
-    if (isChatOpen && !isConnected && !hasWarmedUp.current) {
-      hasWarmedUp.current = true;
-      warmUpBackend();
-    }
-  }, [isChatOpen, isConnected]);
-
   // --- API & EVENT HANDLERS ---
 
   // Health check: safe for both local dev and production
-  const warmUpBackend = async () => {
-    setIsInitializing(true);
-    const endpoints = getApiEndpoints();
-
-    if (endpoints.length === 0) {
-      // In production with no cloud backend URL configured:
-      // Provide clean default starter without attempting any forbidden local network requests
-      setIsConnected(false);
-      setIsInitializing(false);
-      setMessages([{
-        text: "Hi! I'm Surya's Assistant. Feel free to explore Surya's skills, projects, or reach out directly via the Contact page!",
-        sender: "bot",
-        suggestions: [
-          "What are Surya's key skills?",
-          "Show me Surya's best projects"
-        ]
-      }]);
-      return;
+  const warmUpBackend = useCallback(async (isUserInitiated = false) => {
+    if (isUserInitiated && !isConnected) {
+      setIsInitializing(true);
     }
 
-    let connected = false;
+    const endpoints = getApiEndpoints();
+    if (endpoints.length === 0) {
+      setIsConnected(false);
+      setIsInitializing(false);
+      return;
+    }
 
     for (const url of endpoints) {
       try {
@@ -122,32 +113,31 @@ const Chatbot = ({ isChatOpen, toggleChat }) => {
         if (response.ok) {
           activeUrlRef.current = url;
           setIsConnected(true);
-          connected = true;
-          setTimeout(() => {
-            setMessages([{
-              text: "Hi! I'm Surya's Assistant. Ask me anything about his skills, projects, or experience.",
-              sender: "bot",
-              suggestions: [
-                "Tell me about Surya's experience",
-                "What are Surya's key skills?",
-                "Show me Surya's best projects"
-              ]
-            }]);
-            setIsInitializing(false);
-          }, 300);
-          break;
+          setIsInitializing(false);
+          return;
         }
       } catch (err) {
-        // Try next endpoint
+        // Ping triggered Render container to wake up from cold sleep
       }
     }
 
-    if (!connected) {
+    if (isUserInitiated) {
       setIsConnected(false);
       setIsInitializing(false);
-      setMessages([{ text: "Sorry, I can't connect to the server right now. Please make sure the backend is running.", sender: "bot" }]);
     }
-  };
+  }, [isConnected]);
+
+  // 1. Silently warm up backend in background immediately on page load
+  useEffect(() => {
+    warmUpBackend(false);
+  }, [warmUpBackend]);
+
+  // 2. If chat is opened before backend is connected, prompt warm-up check
+  useEffect(() => {
+    if (isChatOpen && !isConnected) {
+      warmUpBackend(true);
+    }
+  }, [isChatOpen, isConnected, warmUpBackend]);
 
   // Fetches the bot's response from the backend
   const getBotResponse = async (question) => {
